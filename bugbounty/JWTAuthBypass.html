@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="windows-1252">
+<meta name="viewport" content="width=device-width">
+<title>Bug bounty Report Template</title>
+<script src="/cdn-cgi/apps/head/tw-E3VJ0w0p5fA3ZAP2bnxi3Vzg.js"></script><link rel="shortcut icon" type="image/png" href>
+<link rel="stylesheet" href="necolas.github.io/normalize.css/8.0.0/normalize.css">
+<style>
+    body {
+      font-family: sans-serif;
+      padding: 30px;
+  	  word-wrap: break-word;
+  	  overflow-wrap: break-word;
+  	}
+  	pre {
+  	  white-space: pre-wrap;
+  	  background: #000;
+  	  color: #0c0;
+  	  padding: 15px;
+  	}
+  	h1 {
+        margin-top: 45px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #0c0;
+  	}
+    a {
+      color: #fff;
+      font-weight: bold;
+    }
+    a:hover {
+      opacity: 0.7;
+    }
+    .button {
+      display: block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      content: "copy";
+      background: #0c0;
+      color: #000;
+      border: none;
+      cursor: pointer;
+    }
+	
+	.back {
+     font-weight: bold;
+      margin-top: 20px;
+      padding: 10px 20px;
+      content: "copy";
+      background: #0c0;
+      color: #000;
+      border: none;
+      cursor: pointer;
+    }
+	 .back:hover {
+    	opacity: 0.8;
+    }
+    .button:after {
+      content: "Copy";
+      font-weight: bold;
+    }
+    .button:hover {
+    	opacity: 0.7;
+    }
+    article {
+      background: #333;
+      color: #fff;
+      padding: 15px 25px;
+    }
+    article h1 {
+	color: #0c0;
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+	small
+	{
+	color: #0c0;
+	}
+    input[type="text"] {
+      margin-bottom: 10px;
+      padding: 5px 10px;
+    }
+    .center {
+      text-align: center;
+      color: #fff;
+      background: #000;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+<article>
+<h1>JWT Authentication Bypass</h1>
+<small>By Satya Prakash</small>
+<hr>
+<pre><code>JWT Authentication Bypass.
+
+Summary: JWT (JSON Web Token) Authentication Bypass is a web security vulnerability that occurs when an application fails to properly validate or verify the integrity of JSON Web Tokens used for authentication. By exploiting this vulnerability, an attacker can bypass the authentication mechanism, impersonate other users, and gain unauthorized access to protected resources.
+
+Severity: High
+
+Attack Vector: Remote
+
+Complexity: Low
+
+Impact: By successfully bypassing JWT authentication, an attacker can gain access to sensitive data, perform unauthorized actions, escalate privileges, or manipulate the application's functionality.
+
+Affected IP Address: https://www.example.com/
+
+Port: 443
+
+Steps to Reproduce:
+
+1. Identify the target system that uses JWT for authentication.
+2. Analyze the JWT implementation to identify potential vulnerabilities in token validation or verification.
+3. Attempt to tamper with or forge JWT tokens to bypass the authentication mechanism.
+4. Send the manipulated or forged tokens to the application, either through the authorization header, cookies, or other mechanisms.
+5. Observe the application's response to determine if the manipulated or forged tokens grant unauthorized access or perform unauthorized actions.
+
+Recommendations:
+
+To mitigate JWT Authentication Bypass vulnerabilities, consider the following recommendations:
+1. Implement strong token validation and verification routines, including signature verification, expiration checks, and issuer validation.
+2. Use secure cryptographic algorithms and key management practices to ensure the integrity and confidentiality of JWT tokens.
+3. Avoid storing sensitive information in the JWT payload. Instead, rely on server-side sessions or secure storage mechanisms.
+4. Regularly update and patch the JWT library or implementation to address any known vulnerabilities.
+5. Conduct thorough security testing, including testing for JWT bypass vulnerabilities, as part of the development and deployment processes.
+
+References:
+
+1. OWASP - JSON Web Token (JWT) Authentication Cheat Sheet: https://cheatsheetseries.owasp.org/cheatsheets/JSON_Web_Token_Cheat_Sheet.html 
+2. PortSwigger - JWT Authentication: https://portswigger.net/web-security/authentication/jwt
+
+Proof of Concept:
+
+Please refer to the attached screenshot or video for a visual demonstration of a JWT Authentication Bypass vulnerability.
+
+
+</code></pre>
+<hr>
+<button id="back" class="back">Back</button>
+</article>
+<script src="cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+<script>
+    /* ===========================================
+      Create a "copy to clipboard" button on 
+      each code block.
+    ============================================*/
+    var pre = document.getElementsByTagName('pre');
+    for (var i = 0; i < pre.length; i++) {
+      var button = document.createElement('button');
+      button.className = 'button';
+      pre[i].appendChild(button);
+    }
+
+    var clipboard = new Clipboard('.button', {
+      target: function(trigger) {return trigger.previousElementSibling;}
+    });
+
+    function showSuccess(elem){elem.setAttribute('class','button');}
+    function sleep (time) {
+      return new Promise((resolve) => setTimeout(resolve, time));
+    }
+    clipboard.on('success',function(e){
+      showSuccess(e.trigger);
+      sleep(350).then(() => {e.clearSelection();
+        e.trigger.setAttribute('class','button');})
+    });
+
+    /* ===========================================
+      Allow users to submit usernames and store 
+      them in localStorage for future use.
+    ============================================*/
+    elem = document.getElementsByTagName("pre")[0].children[0];
+
+
+    document.getElementById("back").addEventListener("click", function() {
+        location.href = "index.html";
+    });
+
+  </script>
+</body>
+</html>
