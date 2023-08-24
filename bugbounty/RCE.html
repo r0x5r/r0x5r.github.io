@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="windows-1252">
+<meta name="viewport" content="width=device-width">
+<title>Bug bounty Report Template</title>
+<script src="/cdn-cgi/apps/head/tw-E3VJ0w0p5fA3ZAP2bnxi3Vzg.js"></script><link rel="shortcut icon" type="image/png" href>
+<link rel="stylesheet" href="necolas.github.io/normalize.css/8.0.0/normalize.css">
+<style>
+    body {
+      font-family: sans-serif;
+      padding: 30px;
+  	  word-wrap: break-word;
+  	  overflow-wrap: break-word;
+  	}
+  	pre {
+  	  white-space: pre-wrap;
+  	  background: #000;
+  	  color: #0c0;
+  	  padding: 15px;
+  	}
+  	h1 {
+        margin-top: 45px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #0c0;
+  	}
+    a {
+      color: #fff;
+      font-weight: bold;
+    }
+    a:hover {
+      opacity: 0.7;
+    }
+    .button {
+      display: block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      content: "copy";
+      background: #0c0;
+      color: #000;
+      border: none;
+      cursor: pointer;
+    }
+	
+	.back {
+     font-weight: bold;
+      margin-top: 20px;
+      padding: 10px 20px;
+      content: "copy";
+      background: #0c0;
+      color: #000;
+      border: none;
+      cursor: pointer;
+    }
+	 .back:hover {
+    	opacity: 0.8;
+    }
+    .button:after {
+      content: "Copy";
+      font-weight: bold;
+    }
+    .button:hover {
+    	opacity: 0.7;
+    }
+    article {
+      background: #333;
+      color: #fff;
+      padding: 15px 25px;
+    }
+    article h1 {
+	color: #0c0;
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+	small
+	{
+	color: #0c0;
+	}
+    input[type="text"] {
+      margin-bottom: 10px;
+      padding: 5px 10px;
+    }
+    .center {
+      text-align: center;
+      color: #fff;
+      background: #000;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+<article>
+<h1>Remote Code Execution</h1>
+<small>By Satya Prakash</small>
+<hr>
+<pre><code>Remote Code Execution (RCE)
+
+
+Summary: Remote Code Execution (RCE) is a critical web security vulnerability that allows an attacker to execute arbitrary code or commands on a target system from a remote location. Exploiting this vulnerability can lead to unauthorized access, data theft, system compromise, and other malicious activities. 
+
+Severity: High 
+
+Attack Vector: Remote 
+
+Complexity: Medium 
+
+Impact: By exploiting RCE, an attacker can execute commands or upload and execute malicious code on the target system. This can result in unauthorized access to sensitive data, escalation of privileges, disruption of services, and complete compromise of the affected system. 
+
+Affected IP Address: https://www.example.com/ 
+
+Port: 443 
+
+ 
+
+Steps to Reproduce: 
+
+1. Identify a target system that is vulnerable to Remote Code Execution. 
+2. Exploit a security vulnerability or misconfiguration that allows for the execution of arbitrary code. 
+3. Craft and transmit a specially designed payload or command to the target system, leveraging the identified vulnerability. 
+4. Monitor the system to observe the successful execution of the payload and verify the arbitrary code execution. 
+
+ 
+
+Recommendations: 
+
+To mitigate Remote Code Execution vulnerabilities, it is recommended to implement the following measures: 
+
+1. Keep all software and frameworks updated with the latest security patches. 
+2. Adhere to secure coding practices, including input validation, output encoding, and proper handling of user input. 
+3. Follow the principle of least privilege, ensuring that code execution is restricted to necessary processes and services only. 
+4. Implement robust access controls and enforce strong authentication mechanisms to prevent unauthorized access to critical functionalities. 
+5. Conduct regular security assessments, such as penetration testing, to identify and remediate any vulnerabilities. 
+
+References: 
+
+1. OWASP - Remote Code Execution: https://owasp.org/www-community/attacks/Remote_Code_Execution 
+2. MITRE - CWE-94: Code Injection: https://cwe.mitre.org/data/definitions/94.html 
+
+Proof of Concept: 
+
+Please refer to the attached screenshot or video for a visual demonstration of a Remote Code Execution attack. 
+
+
+</code></pre>
+<hr>
+<button id="back" class="back">Back</button>
+</article>
+<script src="cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+<script>
+    /* ===========================================
+      Create a "copy to clipboard" button on 
+      each code block.
+    ============================================*/
+    var pre = document.getElementsByTagName('pre');
+    for (var i = 0; i < pre.length; i++) {
+      var button = document.createElement('button');
+      button.className = 'button';
+      pre[i].appendChild(button);
+    }
+
+    var clipboard = new Clipboard('.button', {
+      target: function(trigger) {return trigger.previousElementSibling;}
+    });
+
+    function showSuccess(elem){elem.setAttribute('class','button');}
+    function sleep (time) {
+      return new Promise((resolve) => setTimeout(resolve, time));
+    }
+    clipboard.on('success',function(e){
+      showSuccess(e.trigger);
+      sleep(350).then(() => {e.clearSelection();
+        e.trigger.setAttribute('class','button');})
+    });
+
+    /* ===========================================
+      Allow users to submit usernames and store 
+      them in localStorage for future use.
+    ============================================*/
+    elem = document.getElementsByTagName("pre")[0].children[0];
+
+
+    document.getElementById("back").addEventListener("click", function() {
+        location.href = "index.html";
+    });
+
+  </script>
+</body>
+</html>
