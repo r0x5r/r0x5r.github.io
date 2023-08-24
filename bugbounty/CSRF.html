@@ -98,43 +98,43 @@
 <body>
 <article>
 <h1>Cross Site Request Forgery (CSRF)</h1>
-<small>By Rohit Gautam</small>
+<small>By Satya Prakash</small>
 <hr>
 <pre><code>CSRF 
 
-Summary : Cross-site request forgery (also known as CSRF) is a web security vulnerability that allows an attacker to induce users to perform actions that they do not intend to perform. It allows an attacker to partly circumvent the same origin policy, which is designed to prevent different websites from interfering with each other.
+Summary: Cross-site request forgery (also known as CSRF) is a web security vulnerability that allows an attacker to induce users to perform actions that they do not intend to perform. It allows an attacker to partly circumvent the same origin policy, which is designed to prevent different websites from interfering with each other.
 
 
-Severity :   High  
+Severity:   High  
 
 POST Request : 
 
-Complexity : Easy 
+Complexity: Easy 
 
-From : Remote / External
+From: Remote / External
 
 Steps to Reproduce:
 
-1. Victim login their example account first.
-2. Attacker send a form/link to victim.
-3. If victim click the form/link, A desirable action could happen (eg- Profile Details Update or Email Password)
-4. Attacker successfully performs ATO
+1. A Victim log in to their example account first.
+2. The Attacker sends a form/link to the victim.
+3. If the victim clicks the form/link, A desirable action could happen (eg:- Profile Details Update or Email Password)
+4. Attacker successfully performs Account Take Over.
 
-Impact : An Adversary can carry out CSRF attack to modify the details of a victim and also can take over the victim Account. 
+Impact: An Adversary can carry out a CSRF attack to modify the details of a victim and also can take over the victim's Account. 
 
-Affected IP's : IP Address	Port
+Affected IP's: IP Address	Port
 https://www.india.gov.in/	443
 
-Recommendations : 
+Recommendations: 
 This CSRF protection  protects the form against Cross-site Request Forgery attacks because an attacker would also need to guess the token to successfully trick a victim into sending a valid request. The token should also be invalidated after some time and after the user logs out. 
 
  
-References : 
+References: 
 https://owasp.org/www-community/attacks/csrf
 https://www.acunetix.com/websitesecurity/csrf-attacks/
 https://www.netsparker.com/blog/web-security/csrf-cross-site-request-forgery/
 
-Proof of Concept :
+Proof of Concept:
 
 </code></pre>
 <hr>
