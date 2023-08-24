@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="windows-1252">
+<meta name="viewport" content="width=device-width">
+<title>Bug bounty Report Template</title>
+<script src="/cdn-cgi/apps/head/tw-E3VJ0w0p5fA3ZAP2bnxi3Vzg.js"></script><link rel="shortcut icon" type="image/png" href>
+<link rel="stylesheet" href="necolas.github.io/normalize.css/8.0.0/normalize.css">
+<style>
+    body {
+      font-family: sans-serif;
+      padding: 30px;
+  	  word-wrap: break-word;
+  	  overflow-wrap: break-word;
+  	}
+  	pre {
+  	  white-space: pre-wrap;
+  	  background: #000;
+  	  color: #0c0;
+  	  padding: 15px;
+  	}
+  	h1 {
+        margin-top: 45px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #0c0;
+  	}
+    a {
+      color: #fff;
+      font-weight: bold;
+    }
+    a:hover {
+      opacity: 0.7;
+    }
+    .button {
+      display: block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      content: "copy";
+      background: #0c0;
+      color: #000;
+      border: none;
+      cursor: pointer;
+    }
+	
+	.back {
+     font-weight: bold;
+      margin-top: 20px;
+      padding: 10px 20px;
+      content: "copy";
+      background: #0c0;
+      color: #000;
+      border: none;
+      cursor: pointer;
+    }
+	 .back:hover {
+    	opacity: 0.8;
+    }
+    .button:after {
+      content: "Copy";
+      font-weight: bold;
+    }
+    .button:hover {
+    	opacity: 0.7;
+    }
+    article {
+      background: #333;
+      color: #fff;
+      padding: 15px 25px;
+    }
+    article h1 {
+	color: #0c0;
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+	small
+	{
+	color: #0c0;
+	}
+    input[type="text"] {
+      margin-bottom: 10px;
+      padding: 5px 10px;
+    }
+    .center {
+      text-align: center;
+      color: #fff;
+      background: #000;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+<article>
+<h1>Reflected XSS (Cross-Site Scripting)</h1>
+<small>By Satya Prakash</small>
+<hr>
+<pre><code>Reflected XSS (Cross-Site Scripting)
+    
+
+Summary: Reflected XSS (Cross-Site Scripting) is a web security vulnerability that occurs when an application includes untrusted data in a web page's output without proper validation or sanitization. By exploiting this vulnerability, attackers can inject malicious scripts that are executed in the victim's browser, leading to the theft of sensitive information, session hijacking, or unauthorized actions.
+
+Severity: High
+
+Attack Vector: Remote
+
+Complexity: Medium
+
+Impact: By successfully exploiting Reflected XSS, attackers can manipulate the victim's browsing experience, steal user credentials, perform actions on behalf of the user, distribute malware, or deface the website.
+
+Affected IP Address: https://www.example.com/
+
+Port: 443
+
+Steps to Reproduce:
+
+1. Identify the target web application vulnerable to Reflected XSS.
+2. Analyze user-controllable input fields, query parameters, or HTTP headers used in generating dynamic web pages.
+3. Craft a malicious script payload, including JavaScript or other scripting code, to be injected into the vulnerable input field.
+4. Inject the crafted payload into the vulnerable input field and submit the form or trigger the action that reflects the payload.
+5. Observe the web page's response and check if the injected script is executed in the victim's browser.
+
+Recommendations:
+
+To mitigate Reflected XSS vulnerabilities, consider the following recommendations:
+1. Implement proper input validation and sanitization on all user-controllable input fields.
+2. Use output encoding or context-aware output escaping to prevent the interpretation of untrusted data as active content.
+3. Implement a Content Security Policy (CSP) to restrict the execution of untrusted scripts and enforce strict source whitelisting.
+4. Regularly update and patch web application frameworks, libraries, and dependencies to address any known XSS vulnerabilities.
+5. Educate developers about secure coding practices and the risks associated with XSS attacks, including input validation, output encoding, and input context awareness.
+
+References: 
+
+1. OWASP - Cross-Site Scripting (XSS): https://owasp.org/www-community/attacks/xss/ 
+2. PortSwigger - Cross-Site Scripting (XSS): What is reflected XSS (cross-site scripting)? Tutorial & Examples | Web Security Academy (portswigger.net)
+
+Proof of Concept:
+
+Please refer to the attached screenshot or video for a visual demonstration of a Reflected XSS vulnerability.
+
+
+</code></pre>
+<hr>
+<button id="back" class="back">Back</button>
+</article>
+<script src="cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+<script>
+    /* ===========================================
+      Create a "copy to clipboard" button on 
+      each code block.
+    ============================================*/
+    var pre = document.getElementsByTagName('pre');
+    for (var i = 0; i < pre.length; i++) {
+      var button = document.createElement('button');
+      button.className = 'button';
+      pre[i].appendChild(button);
+    }
+
+    var clipboard = new Clipboard('.button', {
+      target: function(trigger) {return trigger.previousElementSibling;}
+    });
+
+    function showSuccess(elem){elem.setAttribute('class','button');}
+    function sleep (time) {
+      return new Promise((resolve) => setTimeout(resolve, time));
+    }
+    clipboard.on('success',function(e){
+      showSuccess(e.trigger);
+      sleep(350).then(() => {e.clearSelection();
+        e.trigger.setAttribute('class','button');})
+    });
+
+    /* ===========================================
+      Allow users to submit usernames and store 
+      them in localStorage for future use.
+    ============================================*/
+    elem = document.getElementsByTagName("pre")[0].children[0];
+
+
+    document.getElementById("back").addEventListener("click", function() {
+        location.href = "index.html";
+    });
+
+  </script>
+</body>
+</html>
