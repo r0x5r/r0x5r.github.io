@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="windows-1252">
+<meta name="viewport" content="width=device-width">
+<title>Bug bounty Report Template</title>
+<script src="/cdn-cgi/apps/head/tw-E3VJ0w0p5fA3ZAP2bnxi3Vzg.js"></script><link rel="shortcut icon" type="image/png" href>
+<link rel="stylesheet" href="necolas.github.io/normalize.css/8.0.0/normalize.css">
+<style>
+    body {
+      font-family: sans-serif;
+      padding: 30px;
+  	  word-wrap: break-word;
+  	  overflow-wrap: break-word;
+  	}
+  	pre {
+  	  white-space: pre-wrap;
+  	  background: #000;
+  	  color: #0c0;
+  	  padding: 15px;
+  	}
+  	h1 {
+        margin-top: 45px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #0c0;
+  	}
+    a {
+      color: #fff;
+      font-weight: bold;
+    }
+    a:hover {
+      opacity: 0.7;
+    }
+    .button {
+      display: block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      content: "copy";
+      background: #0c0;
+      color: #000;
+      border: none;
+      cursor: pointer;
+    }
+	
+	.back {
+     font-weight: bold;
+      margin-top: 20px;
+      padding: 10px 20px;
+      content: "copy";
+      background: #0c0;
+      color: #000;
+      border: none;
+      cursor: pointer;
+    }
+	 .back:hover {
+    	opacity: 0.8;
+    }
+    .button:after {
+      content: "Copy";
+      font-weight: bold;
+    }
+    .button:hover {
+    	opacity: 0.7;
+    }
+    article {
+      background: #333;
+      color: #fff;
+      padding: 15px 25px;
+    }
+    article h1 {
+	color: #0c0;
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+	small
+	{
+	color: #0c0;
+	}
+    input[type="text"] {
+      margin-bottom: 10px;
+      padding: 5px 10px;
+    }
+    .center {
+      text-align: center;
+      color: #fff;
+      background: #000;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+<article>
+<h1>OS Command Injection </h1>
+<small>By Satya Prakash</small>
+<hr>
+<pre><code>OS Command Injection
+    
+
+Summary: OS Command Injection is a web security vulnerability that occurs when an application allows user-supplied input to be executed as operating system commands without proper validation or sanitization. By exploiting this vulnerability, attackers can execute arbitrary commands on the underlying operating system, leading to unauthorized access, data breaches, or system compromise.
+
+Severity: High
+
+Attack Vector: Remote
+
+Complexity: Medium
+
+Impact: By successfully exploiting OS Command Injection, attackers can execute arbitrary commands, gain unauthorized access to the system, read or modify sensitive files, or execute malicious activities with the privileges of the vulnerable application.
+
+Affected IP Address: https://www.example.com/
+
+Port: 443
+
+Steps to Reproduce:
+
+1. Identify the target application that allows user-supplied input to be executed as OS commands.
+2. Analyze how the application handles user input and constructs commands or command strings.
+3. Craft a malicious payload that includes special characters, command separators, or system commands.
+4. Inject the crafted payload into the vulnerable input field or command execution mechanism.
+5. Observe the application's response and check if the injected commands are executed on the underlying operating system.
+
+Recommendations:
+
+To mitigate OS Command Injection vulnerabilities, consider the following recommendations:
+1. Implement strong input validation and sanitization on all user-supplied data, especially when used in command execution.
+2. Use parameterized queries or prepared statements to avoid command concatenation and injection vulnerabilities.
+3. Employ proper privilege separation to restrict the execution of commands with the least privileges required.
+4. Avoid passing user-supplied input directly to the operating system shell without proper validation.
+5. Regularly update and patch the application, frameworks, and libraries to address any known OS Command Injection vulnerabilities.
+
+References: 
+
+1. OWASP - Command Injection: https://owasp.org/www-community/attacks/Command_Injection 
+2. PortSwigger - Command Injection: https://portswigger.net/web-security/os-command-injection
+
+Proof of Concept:
+
+Please refer to the attached screenshot or video for a visual demonstration of an OS Command Injection vulnerability.
+
+
+</code></pre>
+<hr>
+<button id="back" class="back">Back</button>
+</article>
+<script src="cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+<script>
+    /* ===========================================
+      Create a "copy to clipboard" button on 
+      each code block.
+    ============================================*/
+    var pre = document.getElementsByTagName('pre');
+    for (var i = 0; i < pre.length; i++) {
+      var button = document.createElement('button');
+      button.className = 'button';
+      pre[i].appendChild(button);
+    }
+
+    var clipboard = new Clipboard('.button', {
+      target: function(trigger) {return trigger.previousElementSibling;}
+    });
+
+    function showSuccess(elem){elem.setAttribute('class','button');}
+    function sleep (time) {
+      return new Promise((resolve) => setTimeout(resolve, time));
+    }
+    clipboard.on('success',function(e){
+      showSuccess(e.trigger);
+      sleep(350).then(() => {e.clearSelection();
+        e.trigger.setAttribute('class','button');})
+    });
+
+    /* ===========================================
+      Allow users to submit usernames and store 
+      them in localStorage for future use.
+    ============================================*/
+    elem = document.getElementsByTagName("pre")[0].children[0];
+
+
+    document.getElementById("back").addEventListener("click", function() {
+        location.href = "index.html";
+    });
+
+  </script>
+</body>
+</html>
