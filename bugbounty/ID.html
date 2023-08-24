@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="windows-1252">
+<meta name="viewport" content="width=device-width">
+<title>Bug bounty Report Template</title>
+<script src="/cdn-cgi/apps/head/tw-E3VJ0w0p5fA3ZAP2bnxi3Vzg.js"></script><link rel="shortcut icon" type="image/png" href>
+<link rel="stylesheet" href="necolas.github.io/normalize.css/8.0.0/normalize.css">
+<style>
+    body {
+      font-family: sans-serif;
+      padding: 30px;
+  	  word-wrap: break-word;
+  	  overflow-wrap: break-word;
+  	}
+  	pre {
+  	  white-space: pre-wrap;
+  	  background: #000;
+  	  color: #0c0;
+  	  padding: 15px;
+  	}
+  	h1 {
+        margin-top: 45px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #0c0;
+  	}
+    a {
+      color: #fff;
+      font-weight: bold;
+    }
+    a:hover {
+      opacity: 0.7;
+    }
+    .button {
+      display: block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      content: "copy";
+      background: #0c0;
+      color: #000;
+      border: none;
+      cursor: pointer;
+    }
+	
+	.back {
+     font-weight: bold;
+      margin-top: 20px;
+      padding: 10px 20px;
+      content: "copy";
+      background: #0c0;
+      color: #000;
+      border: none;
+      cursor: pointer;
+    }
+	 .back:hover {
+    	opacity: 0.8;
+    }
+    .button:after {
+      content: "Copy";
+      font-weight: bold;
+    }
+    .button:hover {
+    	opacity: 0.7;
+    }
+    article {
+      background: #333;
+      color: #fff;
+      padding: 15px 25px;
+    }
+    article h1 {
+	color: #0c0;
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+	small
+	{
+	color: #0c0;
+	}
+    input[type="text"] {
+      margin-bottom: 10px;
+      padding: 5px 10px;
+    }
+    .center {
+      text-align: center;
+      color: #fff;
+      background: #000;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+<article>
+<h1>Insecure Deserialization</h1>
+<small>By Satya Prakash</small>
+<hr>
+<pre><code>Insecure Deserialization
+    
+
+Summary: Insecure Deserialization is a significant web security vulnerability that occurs when an application deserializes untrusted data without proper validation or integrity checks. Exploiting this vulnerability allows an attacker to manipulate serialized data to execute arbitrary code, tamper with objects, or conduct other malicious actions.
+
+Severity: High
+
+Attack Vector: Remote
+
+Complexity: Medium
+
+Impact: By exploiting Insecure Deserialization, an attacker can execute arbitrary code, bypass authentication, escalate privileges, perform unauthorized actions, or cause denial-of-service conditions, leading to a compromise of the affected system.
+
+Affected IP Address: https://www.example.com/
+
+Port: 443
+
+Steps to Reproduce:
+
+1. Identify a target system vulnerable to Insecure Deserialization.
+2. Determine the deserialization points within the application where untrusted data is deserialized.
+3. Craft a malicious payload to exploit the deserialization process, potentially including serialized objects with manipulated data or executable code.
+4. Send the payload to the application, either by submitting it through user input or intercepting and modifying serialized data in transit.
+5. Observe the behaviour of the application to verify the successful execution of the injected code or the intended impact.
+
+Recommendations:
+
+To mitigate Insecure Deserialization vulnerabilities, it is recommended to implement the following measures:
+1. Ensure that deserialization is performed only on trusted data from reliable sources.
+2. Implement proper input validation and integrity checks on serialized data to detect and prevent tampering or malicious modifications.
+3. Employ strong access controls and authentication mechanisms to restrict unauthorized access to deserialization endpoints.
+4. Consider using serialization formats that provide built-in security features, such as integrity checks and digital signatures.
+5. Regularly update and patch the application and related libraries to address any known vulnerabilities associated with deserialization.
+
+References:
+
+1. OWASP - Insecure Deserialization: https://owasp.org/www-community/vulnerabilities/Insecure_Deserialization
+2. PortSwigger - Insecure Deserialization: https://portswigger.net/web-security/serialization
+
+Proof of Concept:
+
+Please refer to the attached screenshot or video for a visual demonstration of an Insecure Deserialization attack.
+
+</code></pre>
+<hr>
+<button id="back" class="back">Back</button>
+</article>
+<script src="cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+<script>
+    /* ===========================================
+      Create a "copy to clipboard" button on 
+      each code block.
+    ============================================*/
+    var pre = document.getElementsByTagName('pre');
+    for (var i = 0; i < pre.length; i++) {
+      var button = document.createElement('button');
+      button.className = 'button';
+      pre[i].appendChild(button);
+    }
+
+    var clipboard = new Clipboard('.button', {
+      target: function(trigger) {return trigger.previousElementSibling;}
+    });
+
+    function showSuccess(elem){elem.setAttribute('class','button');}
+    function sleep (time) {
+      return new Promise((resolve) => setTimeout(resolve, time));
+    }
+    clipboard.on('success',function(e){
+      showSuccess(e.trigger);
+      sleep(350).then(() => {e.clearSelection();
+        e.trigger.setAttribute('class','button');})
+    });
+
+    /* ===========================================
+      Allow users to submit usernames and store 
+      them in localStorage for future use.
+    ============================================*/
+    elem = document.getElementsByTagName("pre")[0].children[0];
+
+
+    document.getElementById("back").addEventListener("click", function() {
+        location.href = "index.html";
+    });
+
+  </script>
+</body>
+</html>
