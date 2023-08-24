@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="windows-1252">
+<meta name="viewport" content="width=device-width">
+<title>Bug bounty Report Template</title>
+<script src="/cdn-cgi/apps/head/tw-E3VJ0w0p5fA3ZAP2bnxi3Vzg.js"></script><link rel="shortcut icon" type="image/png" href>
+<link rel="stylesheet" href="necolas.github.io/normalize.css/8.0.0/normalize.css">
+<style>
+    body {
+      font-family: sans-serif;
+      padding: 30px;
+  	  word-wrap: break-word;
+  	  overflow-wrap: break-word;
+  	}
+  	pre {
+  	  white-space: pre-wrap;
+  	  background: #000;
+  	  color: #0c0;
+  	  padding: 15px;
+  	}
+  	h1 {
+        margin-top: 45px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #0c0;
+  	}
+    a {
+      color: #fff;
+      font-weight: bold;
+    }
+    a:hover {
+      opacity: 0.7;
+    }
+    .button {
+      display: block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      content: "copy";
+      background: #0c0;
+      color: #000;
+      border: none;
+      cursor: pointer;
+    }
+	
+	.back {
+     font-weight: bold;
+      margin-top: 20px;
+      padding: 10px 20px;
+      content: "copy";
+      background: #0c0;
+      color: #000;
+      border: none;
+      cursor: pointer;
+    }
+	 .back:hover {
+    	opacity: 0.8;
+    }
+    .button:after {
+      content: "Copy";
+      font-weight: bold;
+    }
+    .button:hover {
+    	opacity: 0.7;
+    }
+    article {
+      background: #333;
+      color: #fff;
+      padding: 15px 25px;
+    }
+    article h1 {
+	color: #0c0;
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+	small
+	{
+	color: #0c0;
+	}
+    input[type="text"] {
+      margin-bottom: 10px;
+      padding: 5px 10px;
+    }
+    .center {
+      text-align: center;
+      color: #fff;
+      background: #000;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+<article>
+<h1>XML External Entity (XXE)</h1>
+<small>By Satya Prakash</small>
+<hr>
+<pre><code>XML External Entity (XXE)
+
+
+Summary: XML External Entity (XXE) Injection is a critical web security vulnerability that occurs when an application processes XML input without proper validation, allowing an attacker to include external entities or exploit other functionalities of the XML parser. Exploiting this vulnerability enables an attacker to read sensitive data, perform server-side request forgery (SSRF), conduct denial-of-service attacks, or execute arbitrary code.
+
+Severity: High
+
+Attack Vector: Remote
+
+Complexity: Medium
+
+Impact: By exploiting XXE Injection, an attacker can access sensitive files on the server, retrieve data from internal resources, perform SSRF attacks, or execute arbitrary code, potentially leading to unauthorized access, data theft, server compromise, or disruption of services.
+
+Affected IP Address: https://www.example.com/
+
+Port: 443
+
+Steps to Reproduce:
+
+1. Identify a target system that is susceptible to XML External Entity (XXE) Injection.
+2. Determine the injection points within the application where XML input is processed and parsed.
+3. Craft a malicious XML payload that includes external entity references or exploits specific functionalities of the XML parser.
+4. Submit the payload to the application, either through user input or by intercepting and modifying XML requests in transit.
+5. Observe the application's response to verify the successful retrieval of sensitive data, execution of arbitrary code, or other intended impact.
+
+Recommendations:
+
+To mitigate XML External Entity (XXE) Injection vulnerabilities, it is crucial to implement the following measures:
+1. Disable external entity processing or limit its usage to trusted sources when parsing XML.
+2. Implement strict input validation and sanitization for XML input, ensuring that untrusted data does not influence the parsing process.
+3. Utilize secure XML parsing libraries or configurations that mitigate XXE vulnerabilities.
+4. Employ whitelisting or filtering techniques to restrict the allowed XML structures, preventing the inclusion of external entities.
+5. Regularly update and patch both the application and the underlying XML parsing libraries to address any known vulnerabilities.
+
+References:
+
+1. OWASP - XML External Entity (XXE) Processing: https://owasp.org/www-community/vulnerabilities/XML_External_Entity_(XXE)_Processing
+2. PortSwigger - XML External Entity (XXE) Injection: https://portswigger.net/web-security/xxe
+
+Proof of Concept:
+
+Please refer to the attached screenshot or video for a visual demonstration of an XML External Entity (XXE) Injection attack.
+    
+
+
+</code></pre>
+<hr>
+<button id="back" class="back">Back</button>
+</article>
+<script src="cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+<script>
+    /* ===========================================
+      Create a "copy to clipboard" button on 
+      each code block.
+    ============================================*/
+    var pre = document.getElementsByTagName('pre');
+    for (var i = 0; i < pre.length; i++) {
+      var button = document.createElement('button');
+      button.className = 'button';
+      pre[i].appendChild(button);
+    }
+
+    var clipboard = new Clipboard('.button', {
+      target: function(trigger) {return trigger.previousElementSibling;}
+    });
+
+    function showSuccess(elem){elem.setAttribute('class','button');}
+    function sleep (time) {
+      return new Promise((resolve) => setTimeout(resolve, time));
+    }
+    clipboard.on('success',function(e){
+      showSuccess(e.trigger);
+      sleep(350).then(() => {e.clearSelection();
+        e.trigger.setAttribute('class','button');})
+    });
+
+    /* ===========================================
+      Allow users to submit usernames and store 
+      them in localStorage for future use.
+    ============================================*/
+    elem = document.getElementsByTagName("pre")[0].children[0];
+
+
+    document.getElementById("back").addEventListener("click", function() {
+        location.href = "index.html";
+    });
+
+  </script>
+</body>
+</html>
