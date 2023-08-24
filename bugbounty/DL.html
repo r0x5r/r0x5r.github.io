@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="windows-1252">
+<meta name="viewport" content="width=device-width">
+<title>Bug bounty Report Template</title>
+<script src="/cdn-cgi/apps/head/tw-E3VJ0w0p5fA3ZAP2bnxi3Vzg.js"></script><link rel="shortcut icon" type="image/png" href>
+<link rel="stylesheet" href="necolas.github.io/normalize.css/8.0.0/normalize.css">
+<style>
+    body {
+      font-family: sans-serif;
+      padding: 30px;
+  	  word-wrap: break-word;
+  	  overflow-wrap: break-word;
+  	}
+  	pre {
+  	  white-space: pre-wrap;
+  	  background: #000;
+  	  color: #0c0;
+  	  padding: 15px;
+  	}
+  	h1 {
+        margin-top: 45px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #0c0;
+  	}
+    a {
+      color: #fff;
+      font-weight: bold;
+    }
+    a:hover {
+      opacity: 0.7;
+    }
+    .button {
+      display: block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      content: "copy";
+      background: #0c0;
+      color: #000;
+      border: none;
+      cursor: pointer;
+    }
+	
+	.back {
+     font-weight: bold;
+      margin-top: 20px;
+      padding: 10px 20px;
+      content: "copy";
+      background: #0c0;
+      color: #000;
+      border: none;
+      cursor: pointer;
+    }
+	 .back:hover {
+    	opacity: 0.8;
+    }
+    .button:after {
+      content: "Copy";
+      font-weight: bold;
+    }
+    .button:hover {
+    	opacity: 0.7;
+    }
+    article {
+      background: #333;
+      color: #fff;
+      padding: 15px 25px;
+    }
+    article h1 {
+	color: #0c0;
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+	small
+	{
+	color: #0c0;
+	}
+    input[type="text"] {
+      margin-bottom: 10px;
+      padding: 5px 10px;
+    }
+    .center {
+      text-align: center;
+      color: #fff;
+      background: #000;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+<article>
+<h1>Directory Listing </h1>
+<small>By Satya Prakash</small>
+<hr>
+<pre><code>Directory Listing
+
+Summary: Directory Listing is a vulnerability in which the server has misconfiguration and exposes the internal and hidden directories from the server to the public internet.
+Sometimes an attacker can gain sensitive information from the server like backup files, source code, API keys, password files etc.
+
+
+Severity:   Medium  
+
+Complexity: Easy 
+
+From: Remote / External
+
+Steps to Reproduce:
+
+Proof of Concept: Attached in the Video
+
+
+Impact: An Adversary can carry out Directory Listing to gain sensitive information from the target server
+
+Affected IP's: IP Address	 Port
+https://www.example.com/      443
+
+Recommendations: 
+The application should have proper permissions on sensitive directories and content.
+ 
+References: 
+https://www.acunetix.com/blog/articles/directory-listing-information-disclosure/#:~:text=Directory%20listing%20is%20a%20web,it%20leads%20to%20information%20disclosure.
+
+
+Proof of Concept:
+
+</code></pre>
+<hr>
+<button id="back" class="back">Back</button>
+</article>
+<script src="cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+<script>
+    /* ===========================================
+      Create a "copy to clipboard" button on 
+      each code block.
+    ============================================*/
+    var pre = document.getElementsByTagName('pre');
+    for (var i = 0; i < pre.length; i++) {
+      var button = document.createElement('button');
+      button.className = 'button';
+      pre[i].appendChild(button);
+    }
+
+    var clipboard = new Clipboard('.button', {
+      target: function(trigger) {return trigger.previousElementSibling;}
+    });
+
+    function showSuccess(elem){elem.setAttribute('class','button');}
+    function sleep (time) {
+      return new Promise((resolve) => setTimeout(resolve, time));
+    }
+    clipboard.on('success',function(e){
+      showSuccess(e.trigger);
+      sleep(350).then(() => {e.clearSelection();
+        e.trigger.setAttribute('class','button');})
+    });
+
+    /* ===========================================
+      Allow users to submit usernames and store 
+      them in localStorage for future use.
+    ============================================*/
+    elem = document.getElementsByTagName("pre")[0].children[0];
+
+
+    document.getElementById("back").addEventListener("click", function() {
+        location.href = "index.html";
+    });
+
+  </script>
+</body>
+</html>
