@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="windows-1252">
+<meta name="viewport" content="width=device-width">
+<title>Bug bounty Report Template</title>
+<script src="/cdn-cgi/apps/head/tw-E3VJ0w0p5fA3ZAP2bnxi3Vzg.js"></script><link rel="shortcut icon" type="image/png" href>
+<link rel="stylesheet" href="necolas.github.io/normalize.css/8.0.0/normalize.css">
+<style>
+    body {
+      font-family: sans-serif;
+      padding: 30px;
+  	  word-wrap: break-word;
+  	  overflow-wrap: break-word;
+  	}
+  	pre {
+  	  white-space: pre-wrap;
+  	  background: #000;
+  	  color: #0c0;
+  	  padding: 15px;
+  	}
+  	h1 {
+        margin-top: 45px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #0c0;
+  	}
+    a {
+      color: #fff;
+      font-weight: bold;
+    }
+    a:hover {
+      opacity: 0.7;
+    }
+    .button {
+      display: block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      content: "copy";
+      background: #0c0;
+      color: #000;
+      border: none;
+      cursor: pointer;
+    }
+	
+	.back {
+     font-weight: bold;
+      margin-top: 20px;
+      padding: 10px 20px;
+      content: "copy";
+      background: #0c0;
+      color: #000;
+      border: none;
+      cursor: pointer;
+    }
+	 .back:hover {
+    	opacity: 0.8;
+    }
+    .button:after {
+      content: "Copy";
+      font-weight: bold;
+    }
+    .button:hover {
+    	opacity: 0.7;
+    }
+    article {
+      background: #333;
+      color: #fff;
+      padding: 15px 25px;
+    }
+    article h1 {
+	color: #0c0;
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+	small
+	{
+	color: #0c0;
+	}
+    input[type="text"] {
+      margin-bottom: 10px;
+      padding: 5px 10px;
+    }
+    .center {
+      text-align: center;
+      color: #fff;
+      background: #000;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+<article>
+<h1>Insecure Direct Object References</h1>
+<small>By Satya Prakash</small>
+<hr>
+<pre><code>
+Insecure Direct Object References (IDOR)
+
+Summary: Insecure Direct Object References (IDOR) is a web security vulnerability that occurs when an application exposes sensitive information or allows unauthorized access to internal objects or resources. Exploiting this vulnerability enables an attacker to manipulate object references or parameters to access unauthorized data or perform unauthorized actions.
+
+Severity: High
+
+Attack Vector: Remote
+
+Complexity: Low
+
+Impact: By exploiting IDOR, an attacker can access and manipulate sensitive data, escalate privileges, view or modify other users' data, or perform unauthorized actions within the application.
+
+Affected IP Address: https://www.example.com/
+
+Port: 443
+
+Steps to Reproduce:
+
+1. Identify the target system vulnerable to Insecure Direct Object References (IDOR).
+2. Analyze the application's functionalities to identify object references or parameters used for accessing resources.
+3. Manipulate object references or parameters to access unauthorized data or perform unauthorized actions.
+4. Submit the manipulated requests and observe the responses for successful access or unauthorized actions.
+5. Verify the impact by confirming the access to sensitive data or the ability to perform unauthorized actions.
+
+Recommendations:
+
+To mitigate Insecure Direct Object References (IDOR) vulnerabilities, it is recommended to implement the following measures:
+
+1. Implement proper access controls and authorization mechanisms to enforce user permissions and prevent unauthorized access.
+2. Avoid exposing internal object references or identifiers directly in the client-side code or URLs.
+3. Utilize indirect references or tokens that are mapped to internal objects and are properly validated and authorized.
+4. Conduct thorough input validation and authorization checks to ensure users can only access authorized data and perform allowed actions.
+5. Regularly review and test the application's access controls to identify and remediate any potential IDOR vulnerabilities.
+
+References: 
+
+1. OWASP - Insecure Direct Object References (IDOR): https://owasp.org/www-community/attacks/Insecure_Direct_Object_References_(IDOR) 
+2. PortSwigger - Insecure Direct Object References: https://portswigger.net/web-security/access-control/idor
+3. CWE-803: Insecure Direct Object Reference: https://cwe.mitre.org/data/definitions/803.html
+
+Proof of Concept:
+
+Please refer to the attached screenshot or video for a visual demonstration of an Insecure Direct Object References (IDOR) attack.emonstration of a Remote Code Execution attack. 
+
+
+</code></pre>
+<hr>
+<button id="back" class="back">Back</button>
+</article>
+<script src="cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+<script>
+    /* ===========================================
+      Create a "copy to clipboard" button on 
+      each code block.
+    ============================================*/
+    var pre = document.getElementsByTagName('pre');
+    for (var i = 0; i < pre.length; i++) {
+      var button = document.createElement('button');
+      button.className = 'button';
+      pre[i].appendChild(button);
+    }
+
+    var clipboard = new Clipboard('.button', {
+      target: function(trigger) {return trigger.previousElementSibling;}
+    });
+
+    function showSuccess(elem){elem.setAttribute('class','button');}
+    function sleep (time) {
+      return new Promise((resolve) => setTimeout(resolve, time));
+    }
+    clipboard.on('success',function(e){
+      showSuccess(e.trigger);
+      sleep(350).then(() => {e.clearSelection();
+        e.trigger.setAttribute('class','button');})
+    });
+
+    /* ===========================================
+      Allow users to submit usernames and store 
+      them in localStorage for future use.
+    ============================================*/
+    elem = document.getElementsByTagName("pre")[0].children[0];
+
+
+    document.getElementById("back").addEventListener("click", function() {
+        location.href = "index.html";
+    });
+
+  </script>
+</body>
+</html>
