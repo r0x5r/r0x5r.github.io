@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="windows-1252">
+<meta name="viewport" content="width=device-width">
+<title>Bug bounty Report Template</title>
+<script src="/cdn-cgi/apps/head/tw-E3VJ0w0p5fA3ZAP2bnxi3Vzg.js"></script><link rel="shortcut icon" type="image/png" href>
+<link rel="stylesheet" href="necolas.github.io/normalize.css/8.0.0/normalize.css">
+<style>
+    body {
+      font-family: sans-serif;
+      padding: 30px;
+  	  word-wrap: break-word;
+  	  overflow-wrap: break-word;
+  	}
+  	pre {
+  	  white-space: pre-wrap;
+  	  background: #000;
+  	  color: #0c0;
+  	  padding: 15px;
+  	}
+  	h1 {
+        margin-top: 45px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #0c0;
+  	}
+    a {
+      color: #fff;
+      font-weight: bold;
+    }
+    a:hover {
+      opacity: 0.7;
+    }
+    .button {
+      display: block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      content: "copy";
+      background: #0c0;
+      color: #000;
+      border: none;
+      cursor: pointer;
+    }
+	
+	.back {
+     font-weight: bold;
+      margin-top: 20px;
+      padding: 10px 20px;
+      content: "copy";
+      background: #0c0;
+      color: #000;
+      border: none;
+      cursor: pointer;
+    }
+	 .back:hover {
+    	opacity: 0.8;
+    }
+    .button:after {
+      content: "Copy";
+      font-weight: bold;
+    }
+    .button:hover {
+    	opacity: 0.7;
+    }
+    article {
+      background: #333;
+      color: #fff;
+      padding: 15px 25px;
+    }
+    article h1 {
+	color: #0c0;
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+	small
+	{
+	color: #0c0;
+	}
+    input[type="text"] {
+      margin-bottom: 10px;
+      padding: 5px 10px;
+    }
+    .center {
+      text-align: center;
+      color: #fff;
+      background: #000;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+<article>
+<h1>Insufficient Transport Layer Protection</h1>
+<small>By Satya Prakash</small>
+<hr>
+<pre><code>Insufficient Transport Layer Protection
+    
+
+Summary: Insufficient Transport Layer Protection is a web security vulnerability that occurs when sensitive data is transmitted over insecure communication channels without adequate encryption or protection. By exploiting this vulnerability, attackers can intercept and tamper with the transmitted data, leading to unauthorized access, data breaches, or information leakage.
+
+Severity: High
+
+Attack Vector: Network
+
+Complexity: Low
+
+Impact: By successfully exploiting Insufficient Transport Layer Protection, attackers can eavesdrop on sensitive information, perform man-in-the-middle attacks, capture user credentials, or manipulate transmitted data.
+
+Affected IP Address: https://www.example.com/
+
+Port: 443
+
+Steps to Reproduce:
+
+1. Identify the target web application or communication channel where sensitive data is transmitted.
+2. Analyze the transport layer security mechanisms, such as SSL/TLS configuration and certificate management.
+3. Check if the application uses secure communication channels (HTTPS) with proper encryption and strong cryptographic algorithms.
+4. Intercept the network traffic using techniques such as packet sniffing or Man-in-the-Middle (MitM) attacks.
+5. Analyze the intercepted data to determine if sensitive information is transmitted in plain text or weakly encrypted form.
+
+Recommendations:
+
+To mitigate Insufficient Transport Layer Protection vulnerabilities, consider the following recommendations:
+1. Implement HTTPS (SSL/TLS) encryption for all sensitive communication between clients and the server.
+2. Use strong cryptographic algorithms and key lengths in SSL/TLS configurations.
+3. Regularly update and patch SSL/TLS libraries and server software to address any known vulnerabilities.
+4. Employ secure certificate management practices, including using trusted certificates and proper certificate validation.
+5. Continuously monitor and audit network traffic to detect any potential vulnerabilities or weaknesses in the transport layer protection.
+
+References:
+
+1. OWASP - Transport Layer Protection Cheat Sheet: https://cheatsheetseries.owasp.org/cheatsheets/Transport_Layer_Protection_Cheat_Sheet.html 
+2. PortSwigger - Transport Layer Protection: Insufficient Transport Layer Protection - GeeksforGeeks
+
+Proof of Concept:
+
+Please refer to the attached screenshot or video for a visual demonstration of an Insufficient Transport Layer Protection vulnerability.
+
+
+</code></pre>
+<hr>
+<button id="back" class="back">Back</button>
+</article>
+<script src="cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+<script>
+    /* ===========================================
+      Create a "copy to clipboard" button on 
+      each code block.
+    ============================================*/
+    var pre = document.getElementsByTagName('pre');
+    for (var i = 0; i < pre.length; i++) {
+      var button = document.createElement('button');
+      button.className = 'button';
+      pre[i].appendChild(button);
+    }
+
+    var clipboard = new Clipboard('.button', {
+      target: function(trigger) {return trigger.previousElementSibling;}
+    });
+
+    function showSuccess(elem){elem.setAttribute('class','button');}
+    function sleep (time) {
+      return new Promise((resolve) => setTimeout(resolve, time));
+    }
+    clipboard.on('success',function(e){
+      showSuccess(e.trigger);
+      sleep(350).then(() => {e.clearSelection();
+        e.trigger.setAttribute('class','button');})
+    });
+
+    /* ===========================================
+      Allow users to submit usernames and store 
+      them in localStorage for future use.
+    ============================================*/
+    elem = document.getElementsByTagName("pre")[0].children[0];
+
+
+    document.getElementById("back").addEventListener("click", function() {
+        location.href = "index.html";
+    });
+
+  </script>
+</body>
+</html>
