@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="windows-1252">
+<meta name="viewport" content="width=device-width">
+<title>Bug bounty Report Template</title>
+<script src="/cdn-cgi/apps/head/tw-E3VJ0w0p5fA3ZAP2bnxi3Vzg.js"></script><link rel="shortcut icon" type="image/png" href>
+<link rel="stylesheet" href="necolas.github.io/normalize.css/8.0.0/normalize.css">
+<style>
+    body {
+      font-family: sans-serif;
+      padding: 30px;
+  	  word-wrap: break-word;
+  	  overflow-wrap: break-word;
+  	}
+  	pre {
+  	  white-space: pre-wrap;
+  	  background: #000;
+  	  color: #0c0;
+  	  padding: 15px;
+  	}
+  	h1 {
+        margin-top: 45px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #0c0;
+  	}
+    a {
+      color: #fff;
+      font-weight: bold;
+    }
+    a:hover {
+      opacity: 0.7;
+    }
+    .button {
+      display: block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      content: "copy";
+      background: #0c0;
+      color: #000;
+      border: none;
+      cursor: pointer;
+    }
+	
+	.back {
+     font-weight: bold;
+      margin-top: 20px;
+      padding: 10px 20px;
+      content: "copy";
+      background: #0c0;
+      color: #000;
+      border: none;
+      cursor: pointer;
+    }
+	 .back:hover {
+    	opacity: 0.8;
+    }
+    .button:after {
+      content: "Copy";
+      font-weight: bold;
+    }
+    .button:hover {
+    	opacity: 0.7;
+    }
+    article {
+      background: #333;
+      color: #fff;
+      padding: 15px 25px;
+    }
+    article h1 {
+	color: #0c0;
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+	small
+	{
+	color: #0c0;
+	}
+    input[type="text"] {
+      margin-bottom: 10px;
+      padding: 5px 10px;
+    }
+    .center {
+      text-align: center;
+      color: #fff;
+      background: #000;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+<article>
+<h1>Session Hijacking</h1>
+<small>By Satya Prakash</small>
+<hr>
+<pre><code>Session Hijacking
+
+
+Summary: Session Hijacking is a significant web security vulnerability that occurs when an attacker gains unauthorized access to a user's session by stealing or impersonating their session identifier. By exploiting this vulnerability, an attacker can impersonate the user, access sensitive information, or perform malicious actions within the user's session.
+
+Severity: High
+
+Attack Vector: Remote
+
+Complexity: Low
+
+Impact: By successfully hijacking a user's session, an attacker can gain unauthorized access to the user's account, perform actions on their behalf, access sensitive data, or manipulate the application's functionality.
+
+Affected IP Address: https://www.example.com/
+
+Port: 443
+
+Steps to Reproduce:
+
+1. Identify the target system vulnerable to session hijacking.
+2. Monitor network traffic or analyze cookies to obtain a valid session identifier.
+3. Intercept the user's session identifier through techniques such as packet sniffing, cross-site scripting (XSS), or session sidejacking.
+4. Use the stolen session identifier to impersonate the user and gain unauthorized access to their session.
+5. Perform actions within the hijacked session, access sensitive information, or manipulate the application's functionality.
+
+Recommendations:
+
+To mitigate Session Hijacking vulnerabilities, consider the following recommendations:
+1. Implement secure session management techniques, including unique and unpredictable session identifiers, session timeouts, and secure session handling.
+2. Use HTTPS (SSL/TLS) to encrypt the communication between the user's browser and the server, preventing session identifier theft through network eavesdropping.
+3. Implement additional security measures such as multi-factor authentication (MFA) or token-based authentication to strengthen user authentication.
+4. Regularly monitor and analyze server logs for suspicious activity related to session hijacking.
+5. Educate users about the risks of session hijacking and advise them to avoid accessing sensitive information over unsecured networks.
+
+References: 
+1. OWASP - Session Hijacking: https://owasp.org/www-community/attacks/Session_hijacking_attack 
+2. PortSwigger - Session Hijacking: https://portswigger.net/web-security/session-hijacking
+
+Proof of Concept:
+
+Please refer to the attached screenshot or video for a visual demonstration of a Session Hijacking vulnerability.
+    
+
+
+</code></pre>
+<hr>
+<button id="back" class="back">Back</button>
+</article>
+<script src="cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+<script>
+    /* ===========================================
+      Create a "copy to clipboard" button on 
+      each code block.
+    ============================================*/
+    var pre = document.getElementsByTagName('pre');
+    for (var i = 0; i < pre.length; i++) {
+      var button = document.createElement('button');
+      button.className = 'button';
+      pre[i].appendChild(button);
+    }
+
+    var clipboard = new Clipboard('.button', {
+      target: function(trigger) {return trigger.previousElementSibling;}
+    });
+
+    function showSuccess(elem){elem.setAttribute('class','button');}
+    function sleep (time) {
+      return new Promise((resolve) => setTimeout(resolve, time));
+    }
+    clipboard.on('success',function(e){
+      showSuccess(e.trigger);
+      sleep(350).then(() => {e.clearSelection();
+        e.trigger.setAttribute('class','button');})
+    });
+
+    /* ===========================================
+      Allow users to submit usernames and store 
+      them in localStorage for future use.
+    ============================================*/
+    elem = document.getElementsByTagName("pre")[0].children[0];
+
+
+    document.getElementById("back").addEventListener("click", function() {
+        location.href = "index.html";
+    });
+
+  </script>
+</body>
+</html>
