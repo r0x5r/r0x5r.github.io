@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="windows-1252">
+<meta name="viewport" content="width=device-width">
+<title>Bug bounty Report Template</title>
+<script src="/cdn-cgi/apps/head/tw-E3VJ0w0p5fA3ZAP2bnxi3Vzg.js"></script><link rel="shortcut icon" type="image/png" href>
+<link rel="stylesheet" href="necolas.github.io/normalize.css/8.0.0/normalize.css">
+<style>
+    body {
+      font-family: sans-serif;
+      padding: 30px;
+  	  word-wrap: break-word;
+  	  overflow-wrap: break-word;
+  	}
+  	pre {
+  	  white-space: pre-wrap;
+  	  background: #000;
+  	  color: #0c0;
+  	  padding: 15px;
+  	}
+  	h1 {
+        margin-top: 45px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #0c0;
+  	}
+    a {
+      color: #fff;
+      font-weight: bold;
+    }
+    a:hover {
+      opacity: 0.7;
+    }
+    .button {
+      display: block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      content: "copy";
+      background: #0c0;
+      color: #000;
+      border: none;
+      cursor: pointer;
+    }
+	
+	.back {
+     font-weight: bold;
+      margin-top: 20px;
+      padding: 10px 20px;
+      content: "copy";
+      background: #0c0;
+      color: #000;
+      border: none;
+      cursor: pointer;
+    }
+	 .back:hover {
+    	opacity: 0.8;
+    }
+    .button:after {
+      content: "Copy";
+      font-weight: bold;
+    }
+    .button:hover {
+    	opacity: 0.7;
+    }
+    article {
+      background: #333;
+      color: #fff;
+      padding: 15px 25px;
+    }
+    article h1 {
+	color: #0c0;
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+	small
+	{
+	color: #0c0;
+	}
+    input[type="text"] {
+      margin-bottom: 10px;
+      padding: 5px 10px;
+    }
+    .center {
+      text-align: center;
+      color: #fff;
+      background: #000;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+<article>
+<h1>Cache Poisoning </h1>
+<small>By Satya Prakash</small>
+<hr>
+<pre><code>Cache Poisoning 
+    
+
+Summary: Cache Poisoning is a web security vulnerability that occurs when an attacker manipulates the contents of a cache with malicious data. By exploiting this vulnerability, an attacker can insert malicious content into a cache, which can later be served to unsuspecting users, leading to various security risks and potential attacks.
+
+Severity: High
+
+Attack Vector: Remote
+
+Complexity: Low
+
+Impact: By successfully poisoning a cache, an attacker can serve malicious content to users, potentially leading to Cross-Site Scripting (XSS) attacks, code injection, data manipulation, unauthorized access, or the bypassing of security controls.
+
+Affected IP Address: https://www.example.com/
+
+Port: 443
+
+Steps to Reproduce:
+
+1. Identify a target system that relies on caching mechanisms, such as a web application with caching enabled.
+2. Analyze the caching mechanism to understand its behaviour and caching policies.
+3. Craft a malicious payload, such as a specially crafted HTTP response, that includes content to be injected into the cache.
+4. Exploit vulnerabilities in the caching mechanism, such as insufficient input validation or insecure caching configurations, to poison the cache with the malicious payload.
+5. Verify that the malicious content is stored in the cache and subsequently served to users accessing the affected resources.
+
+Recommendations:
+
+To mitigate Cache Poisoning vulnerabilities, consider the following recommendations:
+1. Implement proper input validation and sanitization to prevent the injection of malicious content into the cache.
+2. Configure appropriate caching policies, ensuring that sensitive or user-specific data is not stored in the cache.
+3. Use secure caching mechanisms that enforce the separation of cached content between different users or sessions.
+4. Regularly review and update caching configurations and mechanisms to address any potential vulnerabilities.
+5. Implement secure coding practices to prevent injection attacks and vulnerabilities that could lead to cache poisoning.
+
+References: 
+
+1. OWASP - Cache Poisoning: https://owasp.org/www-community/attacks/Cache_Poisoning 
+2. PortSwigger - Cache Poisoning: https://portswigger.net/web-security/cache-poisoning
+
+Proof of Concept:
+
+Please refer to the attached screenshot or video for a visual demonstration of a Cache Poisoning vulnerability.
+
+</code></pre>
+<hr>
+<button id="back" class="back">Back</button>
+</article>
+<script src="cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+<script>
+    /* ===========================================
+      Create a "copy to clipboard" button on 
+      each code block.
+    ============================================*/
+    var pre = document.getElementsByTagName('pre');
+    for (var i = 0; i < pre.length; i++) {
+      var button = document.createElement('button');
+      button.className = 'button';
+      pre[i].appendChild(button);
+    }
+
+    var clipboard = new Clipboard('.button', {
+      target: function(trigger) {return trigger.previousElementSibling;}
+    });
+
+    function showSuccess(elem){elem.setAttribute('class','button');}
+    function sleep (time) {
+      return new Promise((resolve) => setTimeout(resolve, time));
+    }
+    clipboard.on('success',function(e){
+      showSuccess(e.trigger);
+      sleep(350).then(() => {e.clearSelection();
+        e.trigger.setAttribute('class','button');})
+    });
+
+    /* ===========================================
+      Allow users to submit usernames and store 
+      them in localStorage for future use.
+    ============================================*/
+    elem = document.getElementsByTagName("pre")[0].children[0];
+
+
+    document.getElementById("back").addEventListener("click", function() {
+        location.href = "index.html";
+    });
+
+  </script>
+</body>
+</html>
