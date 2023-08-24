@@ -1,0 +1,185 @@
+
+<!DOCTYPE html>
+<html>
+<head><meta charset="windows-1252">
+<meta name="viewport" content="width=device-width">
+<title>Bug bounty Report Template</title>
+<script src="/cdn-cgi/apps/head/tw-E3VJ0w0p5fA3ZAP2bnxi3Vzg.js"></script><link rel="shortcut icon" type="image/png" href>
+<link rel="stylesheet" href="necolas.github.io/normalize.css/8.0.0/normalize.css">
+<style>
+    body {
+      font-family: sans-serif;
+      padding: 30px;
+  	  word-wrap: break-word;
+  	  overflow-wrap: break-word;
+  	}
+  	pre {
+  	  white-space: pre-wrap;
+  	  background: #000;
+  	  color: #0c0;
+  	  padding: 15px;
+  	}
+  	h1 {
+        margin-top: 45px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #0c0;
+  	}
+    a {
+      color: #fff;
+      font-weight: bold;
+    }
+    a:hover {
+      opacity: 0.7;
+    }
+    .button {
+      display: block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      content: "copy";
+      background: #0c0;
+      color: #000;
+      border: none;
+      cursor: pointer;
+    }
+	
+	.back {
+     font-weight: bold;
+      margin-top: 20px;
+      padding: 10px 20px;
+      content: "copy";
+      background: #0c0;
+      color: #000;
+      border: none;
+      cursor: pointer;
+    }
+	 .back:hover {
+    	opacity: 0.8;
+    }
+    .button:after {
+      content: "Copy";
+      font-weight: bold;
+    }
+    .button:hover {
+    	opacity: 0.7;
+    }
+    article {
+      background: #333;
+      color: #fff;
+      padding: 15px 25px;
+    }
+    article h1 {
+	color: #0c0;
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+	small
+	{
+	color: #0c0;
+	}
+    input[type="text"] {
+      margin-bottom: 10px;
+      padding: 5px 10px;
+    }
+    .center {
+      text-align: center;
+      color: #fff;
+      background: #000;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+<article>
+<h1>Cryptography Failure</h1>
+<small>By Satya Prakash</small>
+<hr>
+<pre><code>Cryptography Failure
+    
+    
+Summary: Cryptography Failure is a web security vulnerability that occurs when cryptographic algorithms, protocols, or implementations are used incorrectly, leading to weak or ineffective protection of sensitive data. By exploiting this vulnerability, attackers can compromise the confidentiality, integrity, and authenticity of encrypted data, leading to unauthorized access, data breaches, or manipulation of critical information.
+
+Severity: High
+
+Attack Vector: Remote or Local
+
+Complexity: Medium
+
+Impact: By successfully exploiting Cryptography Failure, attackers can decrypt encrypted data, forge digital signatures, bypass authentication, or perform other unauthorized cryptographic operations.
+
+Affected IP Address: N/A
+
+Port: N/A
+
+Steps to Reproduce:
+
+1. Identify the target system or application using cryptographic algorithms or protocols.
+2. Analyze the cryptographic mechanisms used, such as encryption, hashing, or digital signatures.
+3. Identify misconfigurations, weaknesses, or implementation errors that may lead to cryptographic vulnerabilities.
+4. Exploit the cryptographic vulnerabilities, such as weak key generation, insecure algorithm selection, or improper use of cryptographic functions.
+5. Observe the impact of the cryptographic vulnerability exploitation, including unauthorized access to sensitive information or manipulation of cryptographic operations.
+
+Recommendations:
+
+To mitigate Cryptography Failure vulnerabilities, consider the following recommendations:
+1. Use well-established cryptographic algorithms and protocols that are resistant to known attacks.
+2. Implement cryptographic best practices, such as proper key management, strong key generation, and secure random number generation.
+3. Regularly update and patch cryptographic libraries and components to address any known vulnerabilities.
+4. Use appropriate cryptographic modes and padding schemes to ensure data integrity and confidentiality.
+5. Conduct regular security assessments, including cryptographic audits and penetration testing, to identify and remediate any cryptographic weaknesses.
+
+References: 
+
+1.CrashTest Security - Cryptographic Failures Vulnerability - Examples & Prevention (crashtest-security.com)
+2. OWASP - Cryptographic Storage Cheat Sheet: https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html
+
+Proof of Concept:
+
+Since the impact of Cryptography Failure vulnerabilities can vary depending on the specific cryptographic implementation, no specific proof of concept is provided. It is essential to follow cryptographic best practices, regularly update cryptographic mechanisms, and conduct security assessments to mitigate these vulnerabilities effectively.
+
+
+</code></pre>
+<hr>
+<button id="back" class="back">Back</button>
+</article>
+<script src="cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+<script>
+    /* ===========================================
+      Create a "copy to clipboard" button on 
+      each code block.
+    ============================================*/
+    var pre = document.getElementsByTagName('pre');
+    for (var i = 0; i < pre.length; i++) {
+      var button = document.createElement('button');
+      button.className = 'button';
+      pre[i].appendChild(button);
+    }
+
+    var clipboard = new Clipboard('.button', {
+      target: function(trigger) {return trigger.previousElementSibling;}
+    });
+
+    function showSuccess(elem){elem.setAttribute('class','button');}
+    function sleep (time) {
+      return new Promise((resolve) => setTimeout(resolve, time));
+    }
+    clipboard.on('success',function(e){
+      showSuccess(e.trigger);
+      sleep(350).then(() => {e.clearSelection();
+        e.trigger.setAttribute('class','button');})
+    });
+
+    /* ===========================================
+      Allow users to submit usernames and store 
+      them in localStorage for future use.
+    ============================================*/
+    elem = document.getElementsByTagName("pre")[0].children[0];
+
+
+    document.getElementById("back").addEventListener("click", function() {
+        location.href = "index.html";
+    });
+
+  </script>
+</body>
+</html>
