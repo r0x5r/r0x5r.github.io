@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="windows-1252">
+<meta name="viewport" content="width=device-width">
+<title>Bug bounty Report Template</title>
+<script src="/cdn-cgi/apps/head/tw-E3VJ0w0p5fA3ZAP2bnxi3Vzg.js"></script><link rel="shortcut icon" type="image/png" href>
+<link rel="stylesheet" href="necolas.github.io/normalize.css/8.0.0/normalize.css">
+<style>
+    body {
+      font-family: sans-serif;
+      padding: 30px;
+  	  word-wrap: break-word;
+  	  overflow-wrap: break-word;
+  	}
+  	pre {
+  	  white-space: pre-wrap;
+  	  background: #000;
+  	  color: #0c0;
+  	  padding: 15px;
+  	}
+  	h1 {
+        margin-top: 45px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #0c0;
+  	}
+    a {
+      color: #fff;
+      font-weight: bold;
+    }
+    a:hover {
+      opacity: 0.7;
+    }
+    .button {
+      display: block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      content: "copy";
+      background: #0c0;
+      color: #000;
+      border: none;
+      cursor: pointer;
+    }
+	
+	.back {
+     font-weight: bold;
+      margin-top: 20px;
+      padding: 10px 20px;
+      content: "copy";
+      background: #0c0;
+      color: #000;
+      border: none;
+      cursor: pointer;
+    }
+	 .back:hover {
+    	opacity: 0.8;
+    }
+    .button:after {
+      content: "Copy";
+      font-weight: bold;
+    }
+    .button:hover {
+    	opacity: 0.7;
+    }
+    article {
+      background: #333;
+      color: #fff;
+      padding: 15px 25px;
+    }
+    article h1 {
+	color: #0c0;
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+	small
+	{
+	color: #0c0;
+	}
+    input[type="text"] {
+      margin-bottom: 10px;
+      padding: 5px 10px;
+    }
+    .center {
+      text-align: center;
+      color: #fff;
+      background: #000;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+<article>
+<h1>Sensitive Data Exposure </h1>
+<small>By Satya Prakash</small>
+<hr>
+<pre><code>Sensitive Data Exposure
+    
+
+Summary: Sensitive Data Exposure is a critical web security vulnerability that occurs when an application fails to adequately protect sensitive data, such as passwords, credit card numbers, or personal information. By exploiting this vulnerability, attackers can gain unauthorized access to sensitive data, leading to identity theft, financial fraud, or other malicious activities.
+
+Severity: High
+
+Attack Vector: Remote
+
+Complexity: Low
+
+Impact: By successfully exploiting Sensitive Data Exposure, attackers can access and potentially misuse sensitive information, leading to reputational damage, legal consequences, financial loss, or compromised user privacy.
+
+Affected IP Address: https://www.example.com/
+
+Port: 443
+
+Steps to Reproduce:
+
+1. Identify the target application that handles sensitive data.
+2. Analyze how the application stores, transmits, and processes sensitive information.
+3. Look for security weaknesses, such as weak encryption, improper storage, or insecure transmission mechanisms.
+4. Attempt to intercept or eavesdrop on data transmissions to identify potential exposure points.
+5. Exploit vulnerabilities or weak security controls to gain unauthorized access to sensitive data.
+
+Recommendations:
+
+To mitigate Sensitive Data Exposure vulnerabilities, consider the following recommendations:
+1. Encrypt sensitive data both at rest and in transit using strong encryption algorithms and protocols.
+2. Implement secure coding practices to ensure proper input validation, output encoding, and protection against common vulnerabilities like Cross-Site Scripting (XSS) or SQL Injection.
+3. Follow secure storage practices, such as using hashing and salting for passwords and encrypting critical data stored in databases.
+4. Regularly update and patch software frameworks, libraries, and dependencies to address any known security vulnerabilities.
+5. Conduct regular security assessments, including penetration testing and vulnerability scanning, to identify and remediate any data exposure risks.
+
+References: 
+1. OWASP - Sensitive Data Exposure: https://owasp.org/www-community/attacks/Sensitive_Data_Exposure 
+2. PortSwigger - Sensitive Data Exposure: https://portswigger.net/web-security/sensitive-data
+
+Proof of Concept:
+
+Please refer to the attached screenshot or video for a visual demonstration of a Sensitive Data Exposure vulnerability.
+
+
+</code></pre>
+<hr>
+<button id="back" class="back">Back</button>
+</article>
+<script src="cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+<script>
+    /* ===========================================
+      Create a "copy to clipboard" button on 
+      each code block.
+    ============================================*/
+    var pre = document.getElementsByTagName('pre');
+    for (var i = 0; i < pre.length; i++) {
+      var button = document.createElement('button');
+      button.className = 'button';
+      pre[i].appendChild(button);
+    }
+
+    var clipboard = new Clipboard('.button', {
+      target: function(trigger) {return trigger.previousElementSibling;}
+    });
+
+    function showSuccess(elem){elem.setAttribute('class','button');}
+    function sleep (time) {
+      return new Promise((resolve) => setTimeout(resolve, time));
+    }
+    clipboard.on('success',function(e){
+      showSuccess(e.trigger);
+      sleep(350).then(() => {e.clearSelection();
+        e.trigger.setAttribute('class','button');})
+    });
+
+    /* ===========================================
+      Allow users to submit usernames and store 
+      them in localStorage for future use.
+    ============================================*/
+    elem = document.getElementsByTagName("pre")[0].children[0];
+
+
+    document.getElementById("back").addEventListener("click", function() {
+        location.href = "index.html";
+    });
+
+  </script>
+</body>
+</html>
