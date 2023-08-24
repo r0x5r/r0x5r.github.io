@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="windows-1252">
+<meta name="viewport" content="width=device-width">
+<title>Bug bounty Report Template</title>
+<script src="/cdn-cgi/apps/head/tw-E3VJ0w0p5fA3ZAP2bnxi3Vzg.js"></script><link rel="shortcut icon" type="image/png" href>
+<link rel="stylesheet" href="necolas.github.io/normalize.css/8.0.0/normalize.css">
+<style>
+    body {
+      font-family: sans-serif;
+      padding: 30px;
+  	  word-wrap: break-word;
+  	  overflow-wrap: break-word;
+  	}
+  	pre {
+  	  white-space: pre-wrap;
+  	  background: #000;
+  	  color: #0c0;
+  	  padding: 15px;
+  	}
+  	h1 {
+        margin-top: 45px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #0c0;
+  	}
+    a {
+      color: #fff;
+      font-weight: bold;
+    }
+    a:hover {
+      opacity: 0.7;
+    }
+    .button {
+      display: block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      content: "copy";
+      background: #0c0;
+      color: #000;
+      border: none;
+      cursor: pointer;
+    }
+	
+	.back {
+     font-weight: bold;
+      margin-top: 20px;
+      padding: 10px 20px;
+      content: "copy";
+      background: #0c0;
+      color: #000;
+      border: none;
+      cursor: pointer;
+    }
+	 .back:hover {
+    	opacity: 0.8;
+    }
+    .button:after {
+      content: "Copy";
+      font-weight: bold;
+    }
+    .button:hover {
+    	opacity: 0.7;
+    }
+    article {
+      background: #333;
+      color: #fff;
+      padding: 15px 25px;
+    }
+    article h1 {
+	color: #0c0;
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+	small
+	{
+	color: #0c0;
+	}
+    input[type="text"] {
+      margin-bottom: 10px;
+      padding: 5px 10px;
+    }
+    .center {
+      text-align: center;
+      color: #fff;
+      background: #000;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+<article>
+<h1>Server Side Template Injection </h1>
+<small>By Rohit Gautam</small>
+<hr>
+<pre><code>Server Side Template Injection
+
+
+
+Summary: Server-Side Template Injection (SSTI) is a critical web security vulnerability that occurs when user-supplied input is directly embedded in a server-side template engine, leading to the execution of arbitrary code. Exploiting this vulnerability enables an attacker to execute commands, access sensitive information, or perform unauthorized actions on the server.
+
+Severity: High
+
+Attack Vector: Remote
+
+Complexity: High
+
+Impact: By exploiting SSTI, an attacker can execute arbitrary code within the server-side template, potentially leading to unauthorized access to sensitive data, remote code execution, or even a complete compromise of the server and its resources.
+
+Affected IP Address: https://www.example.com/
+
+Port: 443
+
+Steps to Reproduce:
+
+1. Identify a target system that is susceptible to Server-Side Template Injection.
+2. Determine the injection points within the server-side template engine where user-supplied input is incorporated.
+3. Craft a malicious payload that includes template engine-specific syntax and commands to execute arbitrary code.
+4. Submit the payload as part of the user input or as a parameter to the vulnerable template engine.
+5. Observe the response to confirm the successful execution of the injected code or command.
+
+Recommendations:
+
+To mitigate Server-Side Template Injection vulnerabilities, it is crucial to implement the following measures:
+1. Avoid direct embedding of user input within server-side templates.
+2. Implement strict input validation and sanitization to prevent the injection of template engine-specific syntax.
+3. Apply proper context-specific output encoding to prevent template injection attacks.
+4. Utilize template engine-specific security features and features that provide sandboxing or restricted execution environments.
+5. Regularly update and patch both the web application and the template engine to address any known vulnerabilities.
+
+References:
+
+1. OWASP - Server-Side Template Injection: https://owasp.org/www-community/attacks/Server-Side_Template_Injection
+2. PortSwigger - Server-Side Template Injection: https://portswigger.net/web-security/server-side-template-injection
+
+Proof of Concept:
+
+Please refer to the attached screenshot or video for a visual demonstration of a Server-Side Template Injection attack.
+    
+
+
+</code></pre>
+<hr>
+<button id="back" class="back">Back</button>
+</article>
+<script src="cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+<script>
+    /* ===========================================
+      Create a "copy to clipboard" button on 
+      each code block.
+    ============================================*/
+    var pre = document.getElementsByTagName('pre');
+    for (var i = 0; i < pre.length; i++) {
+      var button = document.createElement('button');
+      button.className = 'button';
+      pre[i].appendChild(button);
+    }
+
+    var clipboard = new Clipboard('.button', {
+      target: function(trigger) {return trigger.previousElementSibling;}
+    });
+
+    function showSuccess(elem){elem.setAttribute('class','button');}
+    function sleep (time) {
+      return new Promise((resolve) => setTimeout(resolve, time));
+    }
+    clipboard.on('success',function(e){
+      showSuccess(e.trigger);
+      sleep(350).then(() => {e.clearSelection();
+        e.trigger.setAttribute('class','button');})
+    });
+
+    /* ===========================================
+      Allow users to submit usernames and store 
+      them in localStorage for future use.
+    ============================================*/
+    elem = document.getElementsByTagName("pre")[0].children[0];
+
+
+    document.getElementById("back").addEventListener("click", function() {
+        location.href = "index.html";
+    });
+
+  </script>
+</body>
+</html>
