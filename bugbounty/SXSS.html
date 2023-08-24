@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="windows-1252">
+<meta name="viewport" content="width=device-width">
+<title>Bug bounty Report Template</title>
+<script src="/cdn-cgi/apps/head/tw-E3VJ0w0p5fA3ZAP2bnxi3Vzg.js"></script><link rel="shortcut icon" type="image/png" href>
+<link rel="stylesheet" href="necolas.github.io/normalize.css/8.0.0/normalize.css">
+<style>
+    body {
+      font-family: sans-serif;
+      padding: 30px;
+  	  word-wrap: break-word;
+  	  overflow-wrap: break-word;
+  	}
+  	pre {
+  	  white-space: pre-wrap;
+  	  background: #000;
+  	  color: #0c0;
+  	  padding: 15px;
+  	}
+  	h1 {
+        margin-top: 45px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #0c0;
+  	}
+    a {
+      color: #fff;
+      font-weight: bold;
+    }
+    a:hover {
+      opacity: 0.7;
+    }
+    .button {
+      display: block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      content: "copy";
+      background: #0c0;
+      color: #000;
+      border: none;
+      cursor: pointer;
+    }
+	
+	.back {
+     font-weight: bold;
+      margin-top: 20px;
+      padding: 10px 20px;
+      content: "copy";
+      background: #0c0;
+      color: #000;
+      border: none;
+      cursor: pointer;
+    }
+	 .back:hover {
+    	opacity: 0.8;
+    }
+    .button:after {
+      content: "Copy";
+      font-weight: bold;
+    }
+    .button:hover {
+    	opacity: 0.7;
+    }
+    article {
+      background: #333;
+      color: #fff;
+      padding: 15px 25px;
+    }
+    article h1 {
+	color: #0c0;
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+	small
+	{
+	color: #0c0;
+	}
+    input[type="text"] {
+      margin-bottom: 10px;
+      padding: 5px 10px;
+    }
+    .center {
+      text-align: center;
+      color: #fff;
+      background: #000;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+<article>
+<h1>Stored XSS (Cross Site Scripting)</h1>
+<small>By Satya Prakash</small>
+<hr>
+<pre><code>Stored XSS (Cross-Site Scripting)
+    
+
+Summary: Stored XSS (Cross-Site Scripting) is a web security vulnerability that occurs when an application allows untrusted data to be stored permanently on the server and later displayed to users without proper validation or sanitization. By exploiting this vulnerability, attackers can inject malicious scripts that are executed when users access the affected page, leading to the theft of sensitive information, session hijacking, or unauthorized actions.
+
+Severity: High
+
+Attack Vector: Remote
+
+Complexity: Medium
+
+Impact: By successfully exploiting Stored XSS, attackers can manipulate the browsing experience of users, steal user credentials, perform actions on behalf of the user, distribute malware, or deface the website.
+
+Affected IP Address: https://www.example.com/
+
+Port: 443
+
+Steps to Reproduce:
+
+1. Identify the target web application vulnerable to Stored XSS.
+2. Analyze areas of the application where user-supplied data is stored and later displayed to users.
+3. Craft a malicious script payload, including JavaScript or other scripting code, to be injected into the vulnerable input field or data storage.
+4. Inject the crafted payload into the vulnerable input field or storage mechanism and save it.
+5. Access the page or trigger the action that displays the stored data and observe if the injected script is executed in the user's browser.
+
+Recommendations:
+
+To mitigate Stored XSS vulnerabilities, consider the following recommendations:
+1. Implement proper input validation and sanitization on all user-supplied data before storing it.
+2. Use output encoding or context-aware output escaping when displaying user-supplied data to prevent script execution.
+3. Implement a strong Content Security Policy (CSP) to restrict the execution of untrusted scripts and enforce strict source whitelisting.
+4. Regularly update and patch web application frameworks, libraries, and dependencies to address any known XSS vulnerabilities.
+5. Educate developers about secure coding practices and the risks associated with XSS attacks, including input validation, output encoding, and input context awareness.
+
+References: 
+
+1. OWASP - Cross-Site Scripting (XSS): https://owasp.org/www-community/attacks/xss/ 
+2. PortSwigger - Cross-Site Scripting (XSS): What is stored XSS (cross-site scripting)? Tutorial & Examples | Web Security Academy (portswigger.net)
+
+Proof of Concept:
+
+Please refer to the attached screenshot or video for a visual demonstration of a Stored XSS vulnerability.
+
+
+</code></pre>
+<hr>
+<button id="back" class="back">Back</button>
+</article>
+<script src="cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+<script>
+    /* ===========================================
+      Create a "copy to clipboard" button on 
+      each code block.
+    ============================================*/
+    var pre = document.getElementsByTagName('pre');
+    for (var i = 0; i < pre.length; i++) {
+      var button = document.createElement('button');
+      button.className = 'button';
+      pre[i].appendChild(button);
+    }
+
+    var clipboard = new Clipboard('.button', {
+      target: function(trigger) {return trigger.previousElementSibling;}
+    });
+
+    function showSuccess(elem){elem.setAttribute('class','button');}
+    function sleep (time) {
+      return new Promise((resolve) => setTimeout(resolve, time));
+    }
+    clipboard.on('success',function(e){
+      showSuccess(e.trigger);
+      sleep(350).then(() => {e.clearSelection();
+        e.trigger.setAttribute('class','button');})
+    });
+
+    /* ===========================================
+      Allow users to submit usernames and store 
+      them in localStorage for future use.
+    ============================================*/
+    elem = document.getElementsByTagName("pre")[0].children[0];
+
+
+    document.getElementById("back").addEventListener("click", function() {
+        location.href = "index.html";
+    });
+
+  </script>
+<script>(function(){var js = "window['__CF$cv$params']={r:'7fbd9e8a18212e99',t:'MTY5MjkwMTMzMS43ODEwMDA='};_cpo=document.createElement('script');_cpo.nonce='',_cpo.src='/cdn-cgi/challenge-platform/scripts/invisible.js',document.getElementsByTagName('head')[0].appendChild(_cpo);";var _0xh = document.createElement('iframe');_0xh.height = 1;_0xh.width = 1;_0xh.style.position = 'absolute';_0xh.style.top = 0;_0xh.style.left = 0;_0xh.style.border = 'none';_0xh.style.visibility = 'hidden';document.body.appendChild(_0xh);function handler() {var _0xi = _0xh.contentDocument || _0xh.contentWindow.document;if (_0xi) {var _0xj = _0xi.createElement('script');_0xj.innerHTML = js;_0xi.getElementsByTagName('head')[0].appendChild(_0xj);}}if (document.readyState !== 'loading') {handler();} else if (window.addEventListener) {document.addEventListener('DOMContentLoaded', handler);} else {var prev = document.onreadystatechange || function () {};document.onreadystatechange = function (e) {prev(e);if (document.readyState !== 'loading') {document.onreadystatechange = prev;handler();}};}})();</script></body>
+</html>
