@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="windows-1252">
+<meta name="viewport" content="width=device-width">
+<title>Bug bounty Report Template</title>
+<script src="/cdn-cgi/apps/head/tw-E3VJ0w0p5fA3ZAP2bnxi3Vzg.js"></script><link rel="shortcut icon" type="image/png" href>
+<link rel="stylesheet" href="necolas.github.io/normalize.css/8.0.0/normalize.css">
+<style>
+    body {
+      font-family: sans-serif;
+      padding: 30px;
+  	  word-wrap: break-word;
+  	  overflow-wrap: break-word;
+  	}
+  	pre {
+  	  white-space: pre-wrap;
+  	  background: #000;
+  	  color: #0c0;
+  	  padding: 15px;
+  	}
+  	h1 {
+        margin-top: 45px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #0c0;
+  	}
+    a {
+      color: #fff;
+      font-weight: bold;
+    }
+    a:hover {
+      opacity: 0.7;
+    }
+    .button {
+      display: block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      content: "copy";
+      background: #0c0;
+      color: #000;
+      border: none;
+      cursor: pointer;
+    }
+	
+	.back {
+     font-weight: bold;
+      margin-top: 20px;
+      padding: 10px 20px;
+      content: "copy";
+      background: #0c0;
+      color: #000;
+      border: none;
+      cursor: pointer;
+    }
+	 .back:hover {
+    	opacity: 0.8;
+    }
+    .button:after {
+      content: "Copy";
+      font-weight: bold;
+    }
+    .button:hover {
+    	opacity: 0.7;
+    }
+    article {
+      background: #333;
+      color: #fff;
+      padding: 15px 25px;
+    }
+    article h1 {
+	color: #0c0;
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+	small
+	{
+	color: #0c0;
+	}
+    input[type="text"] {
+      margin-bottom: 10px;
+      padding: 5px 10px;
+    }
+    .center {
+      text-align: center;
+      color: #fff;
+      background: #000;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+<article>
+<h1>Open Redirect DOM Based Attacks</h1>
+<small>By Satya Prakash</small>
+<hr>
+<pre><code>Open Redirect DOM Based Attacks
+    
+
+Summary: Open Redirect DOM-Based Attacks refer to a web security vulnerability where an attacker manipulates the Document Object Model (DOM) to redirect users to malicious or unintended URLs. By exploiting this vulnerability, attackers can manipulate client-side scripts to modify the DOM and redirect users to phishing sites, malicious downloads, or perform other unauthorized actions.
+
+Severity: Medium
+
+Attack Vector: Remote
+
+Complexity: Medium
+
+Impact: By successfully exploiting Open Redirect DOM based attacks, attackers can deceive users, steal sensitive information, distribute malware, conduct phishing attacks, or perform other unauthorized actions under the guise of a trusted website.
+
+Affected IP Address: https://www.example.com/
+
+Port: 443
+
+Steps to Reproduce:
+
+1. Identify the target web application vulnerable to Open Redirect DOM Based Attacks.
+2. Analyze the client-side code, JavaScript, or other scripting languages used in the application.
+3. Look for user-controlled input or parameters that influence redirection logic or modify the DOM.
+4. Craft malicious input or URL fragments that can manipulate the DOM and modify the redirection behavior.
+5. Inject the crafted input into the vulnerable parameter or component and observe the redirection behavior to the attacker-controlled URL.
+
+Recommendations:
+
+To mitigate Open Redirect DOM Based Attacks, consider the following recommendations:
+1. Implement proper input validation and sanitization to prevent the injection of malicious input that can modify the DOM.
+2. Utilize secure coding practices to avoid client-side vulnerabilities like Cross-Site Scripting (XSS) that can lead to DOM manipulation.
+3. Implement a Content Security Policy (CSP) to restrict the execution of untrusted scripts and prevent unauthorized DOM modifications.
+4. Regularly update and patch client-side frameworks, libraries, and components to address any known security vulnerabilities.
+5. Educate developers about the risks and best practices related to DOM-based attacks and secure coding techniques.
+
+References: 
+
+1. OWASP - DOM-based Cross-Site Scripting (DOM XSS): https://owasp.org/www-community/attacks/DOM_Based_XSS 
+2. PortSwigger - DOM-based Open Redirect: DOM-based open redirection | Web Security Academy (portswigger.net)
+
+Proof of Concept:
+
+Please refer to the attached screenshot or video for a visual demonstration of an Open Redirect DOM Based Attacks vulnerability.
+
+
+</code></pre>
+<hr>
+<button id="back" class="back">Back</button>
+</article>
+<script src="cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+<script>
+    /* ===========================================
+      Create a "copy to clipboard" button on 
+      each code block.
+    ============================================*/
+    var pre = document.getElementsByTagName('pre');
+    for (var i = 0; i < pre.length; i++) {
+      var button = document.createElement('button');
+      button.className = 'button';
+      pre[i].appendChild(button);
+    }
+
+    var clipboard = new Clipboard('.button', {
+      target: function(trigger) {return trigger.previousElementSibling;}
+    });
+
+    function showSuccess(elem){elem.setAttribute('class','button');}
+    function sleep (time) {
+      return new Promise((resolve) => setTimeout(resolve, time));
+    }
+    clipboard.on('success',function(e){
+      showSuccess(e.trigger);
+      sleep(350).then(() => {e.clearSelection();
+        e.trigger.setAttribute('class','button');})
+    });
+
+    /* ===========================================
+      Allow users to submit usernames and store 
+      them in localStorage for future use.
+    ============================================*/
+    elem = document.getElementsByTagName("pre")[0].children[0];
+
+
+    document.getElementById("back").addEventListener("click", function() {
+        location.href = "index.html";
+    });
+
+  </script>
+</body>
+</html>
