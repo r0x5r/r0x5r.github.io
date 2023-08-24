@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="windows-1252">
+<meta name="viewport" content="width=device-width">
+<title>Bug bounty Report Template</title>
+<script src="/cdn-cgi/apps/head/tw-E3VJ0w0p5fA3ZAP2bnxi3Vzg.js"></script><link rel="shortcut icon" type="image/png" href>
+<link rel="stylesheet" href="necolas.github.io/normalize.css/8.0.0/normalize.css">
+<style>
+    body {
+      font-family: sans-serif;
+      padding: 30px;
+  	  word-wrap: break-word;
+  	  overflow-wrap: break-word;
+  	}
+  	pre {
+  	  white-space: pre-wrap;
+  	  background: #000;
+  	  color: #0c0;
+  	  padding: 15px;
+  	}
+  	h1 {
+        margin-top: 45px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #0c0;
+  	}
+    a {
+      color: #fff;
+      font-weight: bold;
+    }
+    a:hover {
+      opacity: 0.7;
+    }
+    .button {
+      display: block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      content: "copy";
+      background: #0c0;
+      color: #000;
+      border: none;
+      cursor: pointer;
+    }
+	
+	.back {
+     font-weight: bold;
+      margin-top: 20px;
+      padding: 10px 20px;
+      content: "copy";
+      background: #0c0;
+      color: #000;
+      border: none;
+      cursor: pointer;
+    }
+	 .back:hover {
+    	opacity: 0.8;
+    }
+    .button:after {
+      content: "Copy";
+      font-weight: bold;
+    }
+    .button:hover {
+    	opacity: 0.7;
+    }
+    article {
+      background: #333;
+      color: #fff;
+      padding: 15px 25px;
+    }
+    article h1 {
+	color: #0c0;
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+	small
+	{
+	color: #0c0;
+	}
+    input[type="text"] {
+      margin-bottom: 10px;
+      padding: 5px 10px;
+    }
+    .center {
+      text-align: center;
+      color: #fff;
+      background: #000;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+<article>
+<h1>Open Redirect</h1>
+<small>By Satya Prakash</small>
+<hr>
+<pre><code>Open Redirect 
+    
+
+Summary: Open Redirect is a web security vulnerability that occurs when an application redirects users to external URLs without proper validation or sanitization. By exploiting this vulnerability, an attacker can manipulate the redirection process to trick users into visiting malicious websites, phishing pages, or perform other malicious actions. 
+
+Severity: Medium 
+
+Attack Vector: Remote 
+
+Complexity: Low 
+
+Impact: By successfully exploiting an Open Redirect vulnerability, an attacker can deceive users, steal sensitive information, distribute malware, conduct phishing attacks, or perform other unauthorized actions under the guise of a trusted website. 
+
+Affected IP Address: https://www.example.com/ 
+
+Port: 443 
+
+Steps to Reproduce: 
+ 
+1. Identify the target application that performs URL redirections. 
+2. Analyze the application's redirection mechanism and URL validation/sanitization process. 
+3. Craft a malicious URL by appending or modifying the redirection parameter to point to a malicious website or URL controlled by the attacker. 
+4. Inject the malicious URL into the application's redirection mechanism, either through user input, query parameters, or other means. 
+5. Persuade a user to click on a manipulated link leading to the vulnerable application and observe the redirection to the malicious URL. 
+
+
+Recommendations: 
+
+To mitigate Open Redirect vulnerabilities, consider the following recommendations: 
+1. Validate and sanitize all user-supplied or untrusted input used in the redirection process. 
+2. Implement a whitelist approach to specify valid redirection URLs or domains and reject others. 
+3. Avoid using user-supplied input directly in the redirection URL. Instead, utilize a server-side mechanism to retrieve the intended target URL securely. 
+4. Use relative URLs or internal redirects whenever possible to minimize the risk of Open Redirect vulnerabilities. 
+5. Educate users about the risks of clicking on untrusted or unfamiliar links and encourage them to verify the authenticity of URLs before accessing them. 
+
+References: 
+
+1. OWASP - Unvalidated Redirects and Forwards: https://owasp.org/www-community/attacks/Unvalidated_Redirects_and_Forwards  
+2. PortSwigger - Open Redirect: https://portswigger.net/web-security/redirects/open-redirect  
+
+Proof of Concept: 
+
+Please refer to the attached screenshot or video for a visual demonstration of an Open Redirect vulnerability. 
+
+</code></pre>
+<hr>
+<button id="back" class="back">Back</button>
+</article>
+<script src="cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+<script>
+    /* ===========================================
+      Create a "copy to clipboard" button on 
+      each code block.
+    ============================================*/
+    var pre = document.getElementsByTagName('pre');
+    for (var i = 0; i < pre.length; i++) {
+      var button = document.createElement('button');
+      button.className = 'button';
+      pre[i].appendChild(button);
+    }
+
+    var clipboard = new Clipboard('.button', {
+      target: function(trigger) {return trigger.previousElementSibling;}
+    });
+
+    function showSuccess(elem){elem.setAttribute('class','button');}
+    function sleep (time) {
+      return new Promise((resolve) => setTimeout(resolve, time));
+    }
+    clipboard.on('success',function(e){
+      showSuccess(e.trigger);
+      sleep(350).then(() => {e.clearSelection();
+        e.trigger.setAttribute('class','button');})
+    });
+
+    /* ===========================================
+      Allow users to submit usernames and store 
+      them in localStorage for future use.
+    ============================================*/
+    elem = document.getElementsByTagName("pre")[0].children[0];
+
+
+    document.getElementById("back").addEventListener("click", function() {
+        location.href = "index.html";
+    });
+
+  </script>
+</body>
+</html>
