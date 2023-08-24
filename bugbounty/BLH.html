@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="windows-1252">
+<meta name="viewport" content="width=device-width">
+<title>Bug bounty Report Template</title>
+<script src="/cdn-cgi/apps/head/tw-E3VJ0w0p5fA3ZAP2bnxi3Vzg.js"></script><link rel="shortcut icon" type="image/png" href>
+<link rel="stylesheet" href="/necolas.github.io/normalize.css/8.0.0/normalize.css">
+<style>
+    body {
+      font-family: sans-serif;
+      padding: 30px;
+  	  word-wrap: break-word;
+  	  overflow-wrap: break-word;
+  	}
+	.back {
+     font-weight: bold;
+      margin-top: 20px;
+      padding: 10px 20px;
+      content: "copy";
+      background: #0c0;
+      color: #000;
+      border: none;
+      cursor: pointer;
+    }
+	 .back:hover {
+    	opacity: 0.8;
+    }
+  	 pre {
+  	  white-space: pre-wrap;
+  	  background: #000;
+  	  color: #0c0;
+  	  padding: 15px;
+  	}
+  	h1 {
+        margin-top: 45px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #eee;
+  	}
+    a {
+      color: #fff;
+      font-weight: bold;
+    }
+    a:hover {
+      opacity: 0.7;
+    }
+    article h1 {
+	color: #0c0;
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+    a:hover {
+      opacity: 0.7;
+    }
+    .button {
+      display: block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      content: "copy";
+      background: #0c0;
+      color: #000;
+      border: none;
+      cursor: pointer;
+    }
+    small
+	{
+	color: #0c0;
+	}
+    .button:after {
+      content: "copy";
+      font-weight: bold;
+    }
+    .button:hover {
+    	opacity: 0.8;
+    }
+    article {
+      background: #333;
+      color: #fff;
+      padding: 15px 25px;
+    }
+    article h1 {
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+    input[type="text"] {
+      margin-bottom: 10px;
+      padding: 5px 10px;
+    }
+    .center {
+      text-align: center;
+      color: #fff;
+      background: #000;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+<article>
+<h1>Broken Link Hijacking</h1>
+<small>By Satya Prakash</small>
+<hr>
+<pre><code>Broken Link Hijacking
+
+Summary : When an web application has any pages, sources, links to external 3rd party services and are broken then the attacker can claim those endpoints to successfully conduct the attack and claim those endpoints on behalf of the target website and impersonate his identity.
+
+Severity :   Medium  
+
+POST Request : 
+
+Complexity : Easy 
+
+From : Remote / External
+
+Steps to Reproduce:
+
+1. Attacker finds the vulnerable injection point (broken link)
+2. Attacker is able to claim the broken link
+3. Attacker is succesfully perfrom the BLH Attack
+
+Impact : An Adversary can carry out BLH attack to trick the victim in clicking the link and visiting the resources which are linked to the website, this way attacker can perfrom identify theft and steal credentials.
+
+Affected IP's : IP Address	Port
+https://www.india.gov.in/	443
+
+Recommendations : 
+Fix all the broken links in the web application to any external resources.
+
+References : 
+https://medium.com/@iamtess5277/what-is-broken-link-hijacking-o-o-872d821da6fd
+https://medium.com/@arbazhussain/broken-link-hijacking-burp-plugin-6918d922c3fb
+https://hackerone.com/reports/266908
+
+
+
+Proof of Concept :
+
+Attached Screenshot or Video
+</code></pre>
+<hr>
+<button id="back" class="back">Back</button>
+</article>
+<script src="cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+<script>
+    /* ===========================================
+      Create a "copy to clipboard" button on 
+      each code block.
+    ============================================*/
+    var pre = document.getElementsByTagName('pre');
+    for (var i = 0; i < pre.length; i++) {
+      var button = document.createElement('button');
+      button.className = 'button';
+      pre[i].appendChild(button);
+    }
+
+    var clipboard = new Clipboard('.button', {
+      target: function(trigger) {return trigger.previousElementSibling;}
+    });
+
+    function showSuccess(elem){elem.setAttribute('class','button');}
+    function sleep (time) {
+      return new Promise((resolve) => setTimeout(resolve, time));
+    }
+    clipboard.on('success',function(e){
+      showSuccess(e.trigger);
+      sleep(350).then(() => {e.clearSelection();
+        e.trigger.setAttribute('class','button');})
+    });
+
+    /* ===========================================
+      Allow users to submit usernames and store 
+      them in localStorage for future use.
+    ============================================*/
+    elem = document.getElementsByTagName("pre")[0].children[0];
+
+
+    document.getElementById("back").addEventListener("click", function() {
+        location.href = "index.html";
+    });
+
+  </script>
+</body>
+</html>
