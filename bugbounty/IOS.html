@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="windows-1252">
+<meta name="viewport" content="width=device-width">
+<title>Bug bounty Report Template</title>
+<script src="/cdn-cgi/apps/head/tw-E3VJ0w0p5fA3ZAP2bnxi3Vzg.js"></script><link rel="shortcut icon" type="image/png" href>
+<link rel="stylesheet" href="necolas.github.io/normalize.css/8.0.0/normalize.css">
+<style>
+    body {
+      font-family: sans-serif;
+      padding: 30px;
+  	  word-wrap: break-word;
+  	  overflow-wrap: break-word;
+  	}
+  	pre {
+  	  white-space: pre-wrap;
+  	  background: #000;
+  	  color: #0c0;
+  	  padding: 15px;
+  	}
+  	h1 {
+        margin-top: 45px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #0c0;
+  	}
+    a {
+      color: #fff;
+      font-weight: bold;
+    }
+    a:hover {
+      opacity: 0.7;
+    }
+    .button {
+      display: block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      content: "copy";
+      background: #0c0;
+      color: #000;
+      border: none;
+      cursor: pointer;
+    }
+	
+	.back {
+     font-weight: bold;
+      margin-top: 20px;
+      padding: 10px 20px;
+      content: "copy";
+      background: #0c0;
+      color: #000;
+      border: none;
+      cursor: pointer;
+    }
+	 .back:hover {
+    	opacity: 0.8;
+    }
+    .button:after {
+      content: "Copy";
+      font-weight: bold;
+    }
+    .button:hover {
+    	opacity: 0.7;
+    }
+    article {
+      background: #333;
+      color: #fff;
+      padding: 15px 25px;
+    }
+    article h1 {
+	color: #0c0;
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+	small
+	{
+	color: #0c0;
+	}
+    input[type="text"] {
+      margin-bottom: 10px;
+      padding: 5px 10px;
+    }
+    .center {
+      text-align: center;
+      color: #fff;
+      background: #000;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+<article>
+<h1>Insecure OS/Firmware</h1>
+<small>By Satya Prakash</small>
+<hr>
+<pre><code>Insecure OS/Firmware
+    
+
+Summary: Insecure OS/Firmware refers to a web security vulnerability that occurs when the underlying operating system or firmware of a device or system is outdated, improperly configured, or contains known vulnerabilities. By exploiting this vulnerability, attackers can gain unauthorized access, execute malicious code, or manipulate the system to compromise its security.
+
+Severity: High
+
+Attack Vector: Local or Remote
+
+Complexity: Medium
+
+Impact: By successfully exploiting Insecure OS/Firmware, attackers can compromise the confidentiality, integrity, and availability of the system. This can lead to unauthorized access, data breaches, system compromise, or the installation of malware or backdoors.
+
+Affected IP Address: N/A
+
+Port: N/A
+
+Steps to Reproduce:
+
+1. Identify the target system or device with outdated or insecure OS/Firmware.
+2. Analyze the version and configuration of the OS/Firmware to identify known vulnerabilities or insecure settings.
+3. Research public databases, security advisories, or vendor releases to determine the vulnerabilities associated with the OS/Firmware version.
+4. Exploit the known vulnerabilities, such as remote code execution, privilege escalation, or unauthorized access, specific to the insecure OS/Firmware.
+5. Observe the impact of the vulnerability exploitation, including unauthorized access, data compromise, or control over the affected system.
+
+Recommendations:
+
+To mitigate Insecure OS/Firmware vulnerabilities, consider the following recommendations:
+1. Regularly update and patch the operating system and firmware with the latest security updates and patches provided by the vendor.
+2. Implement a robust vulnerability management program to identify and remediate known vulnerabilities in the OS/Firmware.
+3. Follow best practices for secure OS/Firmware configuration, including disabling unnecessary services, enabling strong authentication, and applying appropriate access controls.
+4. Monitor vendor security advisories and subscribe to mailing lists to stay informed about security updates and releases.
+5. Conduct regular security assessments, including vulnerability scanning and penetration testing, to identify and remediate any OS/Firmware vulnerabilities.
+
+References: 
+
+1. OWASP - Insecure Software/Firmware: A04 Insecure Design - OWASP Top 10:2021
+2. NIST - Guide to Industrial Control Systems (ICS) Security: https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-82r2.pdf
+
+Proof of Concept:
+
+Since the impact of Insecure OS/Firmware vulnerabilities can vary depending on the specific system or device, no specific proof of concept is provided. It is crucial to regularly update and patch the OS/Firmware and follow best security practices to mitigate these vulnerabilities effectively.
+
+
+</code></pre>
+<hr>
+<button id="back" class="back">Back</button>
+</article>
+<script src="cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+<script>
+    /* ===========================================
+      Create a "copy to clipboard" button on 
+      each code block.
+    ============================================*/
+    var pre = document.getElementsByTagName('pre');
+    for (var i = 0; i < pre.length; i++) {
+      var button = document.createElement('button');
+      button.className = 'button';
+      pre[i].appendChild(button);
+    }
+
+    var clipboard = new Clipboard('.button', {
+      target: function(trigger) {return trigger.previousElementSibling;}
+    });
+
+    function showSuccess(elem){elem.setAttribute('class','button');}
+    function sleep (time) {
+      return new Promise((resolve) => setTimeout(resolve, time));
+    }
+    clipboard.on('success',function(e){
+      showSuccess(e.trigger);
+      sleep(350).then(() => {e.clearSelection();
+        e.trigger.setAttribute('class','button');})
+    });
+
+    /* ===========================================
+      Allow users to submit usernames and store 
+      them in localStorage for future use.
+    ============================================*/
+    elem = document.getElementsByTagName("pre")[0].children[0];
+
+
+    document.getElementById("back").addEventListener("click", function() {
+        location.href = "index.html";
+    });
+
+  </script>
+</body>
+</html>
