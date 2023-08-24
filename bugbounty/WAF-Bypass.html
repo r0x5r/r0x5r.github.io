@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="windows-1252">
+<meta name="viewport" content="width=device-width">
+<title>Bug bounty Report Template</title>
+<script src="/cdn-cgi/apps/head/tw-E3VJ0w0p5fA3ZAP2bnxi3Vzg.js"></script><link rel="shortcut icon" type="image/png" href>
+<link rel="stylesheet" href="necolas.github.io/normalize.css/8.0.0/normalize.css">
+<style>
+    body {
+      font-family: sans-serif;
+      padding: 30px;
+  	  word-wrap: break-word;
+  	  overflow-wrap: break-word;
+  	}
+  	pre {
+  	  white-space: pre-wrap;
+  	  background: #000;
+  	  color: #0c0;
+  	  padding: 15px;
+  	}
+  	h1 {
+        margin-top: 45px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #0c0;
+  	}
+    a {
+      color: #fff;
+      font-weight: bold;
+    }
+    a:hover {
+      opacity: 0.7;
+    }
+    .button {
+      display: block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      content: "copy";
+      background: #0c0;
+      color: #000;
+      border: none;
+      cursor: pointer;
+    }
+	
+	.back {
+     font-weight: bold;
+      margin-top: 20px;
+      padding: 10px 20px;
+      content: "copy";
+      background: #0c0;
+      color: #000;
+      border: none;
+      cursor: pointer;
+    }
+	 .back:hover {
+    	opacity: 0.8;
+    }
+    .button:after {
+      content: "Copy";
+      font-weight: bold;
+    }
+    .button:hover {
+    	opacity: 0.7;
+    }
+    article {
+      background: #333;
+      color: #fff;
+      padding: 15px 25px;
+    }
+    article h1 {
+	color: #0c0;
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+	small
+	{
+	color: #0c0;
+	}
+    input[type="text"] {
+      margin-bottom: 10px;
+      padding: 5px 10px;
+    }
+    .center {
+      text-align: center;
+      color: #fff;
+      background: #000;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+<article>
+<h1>Web Application Firewall (WAF) Bypass</h1>
+<small>By Satya Prakash</small>
+<hr>
+<pre><code>Web Application Firewall (WAF) Bypass
+
+
+Summary: Web Application Firewall (WAF) Bypass refers to a web security vulnerability where an attacker circumvents or evades the protection offered by a WAF. By exploiting this vulnerability, an attacker can bypass WAF rules and gain unauthorized access, manipulate data, or execute malicious actions within the targeted web application.
+
+Severity: High
+
+Attack Vector: Remote
+
+Complexity: Medium
+
+Impact: By successfully bypassing a WAF, an attacker can bypass security controls, evade detection, and exploit vulnerabilities within the web application. This can lead to unauthorized access, data breaches, compromised user accounts, or the injection of malicious code.
+
+Affected IP Address: https://www.example.com/
+
+Port: 443
+
+Steps to Reproduce:
+
+1. Identify the target system protected by a Web Application Firewall.
+2. Analyze the WAF protection mechanisms and rules in place.
+3. Identify vulnerabilities or weaknesses in the web application that can potentially bypass the WAF.
+4. Develop evasion techniques such as encoding, obfuscation, or payload manipulation to bypass the WAF.
+5. Test the developed evasion techniques against the target system, monitoring the application's response for successful bypass of the WAF.
+
+Recommendations:
+
+To mitigate Web Application Firewall (WAF) Bypass vulnerabilities, consider the following recommendations:
+1. Implement a comprehensive security strategy that includes multiple layers of defense beyond relying solely on a WAF.
+2. Regularly update and tune the WAF rules to address emerging threats and vulnerabilities.
+3. Deploy a combination of signature-based and behavior-based rule sets to enhance the effectiveness of the WAF.
+4. Implement anomaly detection and machine learning techniques to detect sophisticated evasion attempts.
+5. Conduct regular security testing, including penetration testing, to identify and address any WAF bypass vulnerabilities.
+
+References: 
+
+1. OWASP - Web Application Firewall (WAF): https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/05-Testing_for_Web_Application_Firewall 
+2. PortSwigger - Web Application Firewall (WAF): https://portswigger.net/web-security/web-application-firewalls
+
+Proof of Concept:
+
+Please refer to the attached screenshot or video for a visual demonstration of a Web Application Firewall (WAF) Bypass vulnerability.
+    
+
+
+</code></pre>
+<hr>
+<button id="back" class="back">Back</button>
+</article>
+<script src="cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+<script>
+    /* ===========================================
+      Create a "copy to clipboard" button on 
+      each code block.
+    ============================================*/
+    var pre = document.getElementsByTagName('pre');
+    for (var i = 0; i < pre.length; i++) {
+      var button = document.createElement('button');
+      button.className = 'button';
+      pre[i].appendChild(button);
+    }
+
+    var clipboard = new Clipboard('.button', {
+      target: function(trigger) {return trigger.previousElementSibling;}
+    });
+
+    function showSuccess(elem){elem.setAttribute('class','button');}
+    function sleep (time) {
+      return new Promise((resolve) => setTimeout(resolve, time));
+    }
+    clipboard.on('success',function(e){
+      showSuccess(e.trigger);
+      sleep(350).then(() => {e.clearSelection();
+        e.trigger.setAttribute('class','button');})
+    });
+
+    /* ===========================================
+      Allow users to submit usernames and store 
+      them in localStorage for future use.
+    ============================================*/
+    elem = document.getElementsByTagName("pre")[0].children[0];
+
+
+    document.getElementById("back").addEventListener("click", function() {
+        location.href = "index.html";
+    });
+
+  </script>
+</body>
+</html>
