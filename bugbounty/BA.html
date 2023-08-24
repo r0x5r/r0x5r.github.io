@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="windows-1252">
+<meta name="viewport" content="width=device-width">
+<title>Bug bounty Report Template</title>
+<script src="/cdn-cgi/apps/head/tw-E3VJ0w0p5fA3ZAP2bnxi3Vzg.js"></script><link rel="shortcut icon" type="image/png" href>
+<link rel="stylesheet" href="necolas.github.io/normalize.css/8.0.0/normalize.css">
+<style>
+    body {
+      font-family: sans-serif;
+      padding: 30px;
+  	  word-wrap: break-word;
+  	  overflow-wrap: break-word;
+  	}
+  	pre {
+  	  white-space: pre-wrap;
+  	  background: #000;
+  	  color: #0c0;
+  	  padding: 15px;
+  	}
+  	h1 {
+        margin-top: 45px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #0c0;
+  	}
+    a {
+      color: #fff;
+      font-weight: bold;
+    }
+    a:hover {
+      opacity: 0.7;
+    }
+    .button {
+      display: block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      content: "copy";
+      background: #0c0;
+      color: #000;
+      border: none;
+      cursor: pointer;
+    }
+	
+	.back {
+     font-weight: bold;
+      margin-top: 20px;
+      padding: 10px 20px;
+      content: "copy";
+      background: #0c0;
+      color: #000;
+      border: none;
+      cursor: pointer;
+    }
+	 .back:hover {
+    	opacity: 0.8;
+    }
+    .button:after {
+      content: "Copy";
+      font-weight: bold;
+    }
+    .button:hover {
+    	opacity: 0.7;
+    }
+    article {
+      background: #333;
+      color: #fff;
+      padding: 15px 25px;
+    }
+    article h1 {
+	color: #0c0;
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+	small
+	{
+	color: #0c0;
+	}
+    input[type="text"] {
+      margin-bottom: 10px;
+      padding: 5px 10px;
+    }
+    .center {
+      text-align: center;
+      color: #fff;
+      background: #000;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+<article>
+<h1>Broken Authentication </h1>
+<small>By Satya Prakash</small>
+<hr>
+<pre><code>Broken Authentication
+    
+
+Summary: Broken Authentication is a critical web security vulnerability that arises when an application inadequately handles user authentication and session management. Exploiting this vulnerability enables attackers to bypass authentication mechanisms, compromise user accounts, and gain unauthorized access to sensitive data or perform unauthorized actions masquerading as legitimate users.
+
+Severity: High
+
+Attack Vector: Remote
+
+Complexity: Low
+
+Impact: By exploiting Broken Authentication, attackers can impersonate users, exfiltrate credentials, escalate privileges, access confidential information, or execute unauthorized actions within the application.
+
+Affected IP Address: https://www.example.com/
+
+Port: 443
+
+Steps to Reproduce:
+
+1. Identify the target system vulnerable to Broken Authentication.
+2. Analyze the application's authentication mechanisms and session management processes.
+3. Attempt to exploit weak authentication controls, such as password guessing, credential stuffing, or session hijacking.
+4. Exploit vulnerabilities in session management, such as session fixation or insecure password reset mechanisms.
+5. Gain unauthorized access, escalate privileges, or perform unauthorized actions on behalf of legitimate users.
+
+Recommendations:
+
+To effectively mitigate Broken Authentication vulnerabilities, adhere to the following best practices:
+
+1. Implement robust and secure authentication mechanisms, including password complexity requirements, multi-factor authentication (MFA), and secure session management.
+2. Utilize secure session handling techniques, such as unique session identifiers, session expiration, and protection against session fixation attacks.
+3. Employ secure password storage methods, such as salted hashing or key stretching algorithms.
+4. Regularly update and patch the application's authentication and session management components to address any known vulnerabilities.
+5. Conduct comprehensive security testing, including vulnerability assessments and penetration testing, to identify and remediate any authentication-related weaknesses.
+
+References:
+1. OWASP - Broken Authentication and Session Management: https://owasp.org/www-community/attacks/Broken_Authentication_and_Session_Management
+2. PortSwigger - Broken Authentication and Session Management: https://portswigger.net/web-security/authentication
+
+Proof of Concept:
+
+For a detailed visual demonstration of a Broken Authentication vulnerability, please refer to the attached screenshot or video.
+
+
+</code></pre>
+<hr>
+<button id="back" class="back">Back</button>
+</article>
+<script src="cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+<script>
+    /* ===========================================
+      Create a "copy to clipboard" button on 
+      each code block.
+    ============================================*/
+    var pre = document.getElementsByTagName('pre');
+    for (var i = 0; i < pre.length; i++) {
+      var button = document.createElement('button');
+      button.className = 'button';
+      pre[i].appendChild(button);
+    }
+
+    var clipboard = new Clipboard('.button', {
+      target: function(trigger) {return trigger.previousElementSibling;}
+    });
+
+    function showSuccess(elem){elem.setAttribute('class','button');}
+    function sleep (time) {
+      return new Promise((resolve) => setTimeout(resolve, time));
+    }
+    clipboard.on('success',function(e){
+      showSuccess(e.trigger);
+      sleep(350).then(() => {e.clearSelection();
+        e.trigger.setAttribute('class','button');})
+    });
+
+    /* ===========================================
+      Allow users to submit usernames and store 
+      them in localStorage for future use.
+    ============================================*/
+    elem = document.getElementsByTagName("pre")[0].children[0];
+
+
+    document.getElementById("back").addEventListener("click", function() {
+        location.href = "index.html";
+    });
+
+  </script>
+<script>(function(){var js = "window['__CF$cv$params']={r:'7fbd7289ff022e96',t:'MTY5Mjg5OTUzMC4wMDEwMDA='};_cpo=document.createElement('script');_cpo.nonce='',_cpo.src='/cdn-cgi/challenge-platform/scripts/invisible.js',document.getElementsByTagName('head')[0].appendChild(_cpo);";var _0xh = document.createElement('iframe');_0xh.height = 1;_0xh.width = 1;_0xh.style.position = 'absolute';_0xh.style.top = 0;_0xh.style.left = 0;_0xh.style.border = 'none';_0xh.style.visibility = 'hidden';document.body.appendChild(_0xh);function handler() {var _0xi = _0xh.contentDocument || _0xh.contentWindow.document;if (_0xi) {var _0xj = _0xi.createElement('script');_0xj.innerHTML = js;_0xi.getElementsByTagName('head')[0].appendChild(_0xj);}}if (document.readyState !== 'loading') {handler();} else if (window.addEventListener) {document.addEventListener('DOMContentLoaded', handler);} else {var prev = document.onreadystatechange || function () {};document.onreadystatechange = function (e) {prev(e);if (document.readyState !== 'loading') {document.onreadystatechange = prev;handler();}};}})();</script></body>
+</html>
