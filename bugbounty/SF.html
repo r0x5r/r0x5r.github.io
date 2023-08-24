@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="windows-1252">
+<meta name="viewport" content="width=device-width">
+<title>Bug bounty Report Template</title>
+<script src="/cdn-cgi/apps/head/tw-E3VJ0w0p5fA3ZAP2bnxi3Vzg.js"></script><link rel="shortcut icon" type="image/png" href>
+<link rel="stylesheet" href="necolas.github.io/normalize.css/8.0.0/normalize.css">
+<style>
+    body {
+      font-family: sans-serif;
+      padding: 30px;
+  	  word-wrap: break-word;
+  	  overflow-wrap: break-word;
+  	}
+  	pre {
+  	  white-space: pre-wrap;
+  	  background: #000;
+  	  color: #0c0;
+  	  padding: 15px;
+  	}
+  	h1 {
+        margin-top: 45px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #0c0;
+  	}
+    a {
+      color: #fff;
+      font-weight: bold;
+    }
+    a:hover {
+      opacity: 0.7;
+    }
+    .button {
+      display: block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      content: "copy";
+      background: #0c0;
+      color: #000;
+      border: none;
+      cursor: pointer;
+    }
+	
+	.back {
+     font-weight: bold;
+      margin-top: 20px;
+      padding: 10px 20px;
+      content: "copy";
+      background: #0c0;
+      color: #000;
+      border: none;
+      cursor: pointer;
+    }
+	 .back:hover {
+    	opacity: 0.8;
+    }
+    .button:after {
+      content: "Copy";
+      font-weight: bold;
+    }
+    .button:hover {
+    	opacity: 0.7;
+    }
+    article {
+      background: #333;
+      color: #fff;
+      padding: 15px 25px;
+    }
+    article h1 {
+	color: #0c0;
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+	small
+	{
+	color: #0c0;
+	}
+    input[type="text"] {
+      margin-bottom: 10px;
+      padding: 5px 10px;
+    }
+    .center {
+      text-align: center;
+      color: #fff;
+      background: #000;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+<article>
+<h1>Session Fixation</h1>
+<small>By Satya Prakash</small>
+<hr>
+<pre><code>Session Fixation
+    
+
+Summary: Session Fixation is a web security vulnerability that occurs when an attacker sets a user's session identifier (SessionID) to a known value, either by predicting it or forcing it onto the user. By exploiting this vulnerability, the attacker can later assume the user's identity and gain unauthorized access to their account or sensitive information.
+
+Severity: Medium
+
+Attack Vector: Remote or Local
+
+Complexity: Low
+
+Impact: By successfully exploiting Session Fixation, attackers can impersonate users, perform actions on their behalf, access sensitive data, or compromise the confidentiality and integrity of user sessions.
+
+Affected IP Address: https://www.example.com/
+
+Port: 443
+
+Steps to Reproduce:
+
+1. Identify the target web application that uses session identifiers (SessionID) for user authentication or session management.
+2. Analyze the session management mechanisms, including session identifier generation and handling.
+3. Craft a session identifier (SessionID) to be used for the attack, such as a known value or a specially crafted value.
+4. Trick the victim user into using the crafted SessionID, possibly through social engineering, malicious links, or email phishing.
+5. Confirm that the victim's session identifier (SessionID) has been set to the attacker's value and observe the unauthorized access to the victim's account or sensitive data.
+
+Recommendations:
+
+To mitigate Session Fixation vulnerabilities, consider the following recommendations:
+1. Use secure session management practices, including generating random and unpredictable session identifiers (SessionID).
+2. Implement secure transport mechanisms, such as HTTPS, to prevent SessionID interception or manipulation during transmission.
+3. Regenerate the SessionID after user authentication to prevent Session Fixation attacks.
+4. Employ secure coding practices to avoid SessionID vulnerabilities, such as Cross-Site Scripting (XSS) or Cross-Site Request Forgery (CSRF).
+5. Implement strong user authentication and authorization mechanisms to prevent unauthorized access even in the event of Session Fixation.
+
+References:
+
+1. OWASP - Session fixation Session fixation | OWASP Foundation 
+2. GeeksforGeeks - Session Fixation Attack - GeeksforGeeks
+
+Proof of Concept:
+
+Since the impact of Session Fixation vulnerabilities can vary depending on the specific web application or session management, no specific proof of concept is provided. It is essential to implement secure session management practices and educate users about potential risks to prevent and mitigate Session Fixation effectively.
+
+
+</code></pre>
+<hr>
+<button id="back" class="back">Back</button>
+</article>
+<script src="cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+<script>
+    /* ===========================================
+      Create a "copy to clipboard" button on 
+      each code block.
+    ============================================*/
+    var pre = document.getElementsByTagName('pre');
+    for (var i = 0; i < pre.length; i++) {
+      var button = document.createElement('button');
+      button.className = 'button';
+      pre[i].appendChild(button);
+    }
+
+    var clipboard = new Clipboard('.button', {
+      target: function(trigger) {return trigger.previousElementSibling;}
+    });
+
+    function showSuccess(elem){elem.setAttribute('class','button');}
+    function sleep (time) {
+      return new Promise((resolve) => setTimeout(resolve, time));
+    }
+    clipboard.on('success',function(e){
+      showSuccess(e.trigger);
+      sleep(350).then(() => {e.clearSelection();
+        e.trigger.setAttribute('class','button');})
+    });
+
+    /* ===========================================
+      Allow users to submit usernames and store 
+      them in localStorage for future use.
+    ============================================*/
+    elem = document.getElementsByTagName("pre")[0].children[0];
+
+
+    document.getElementById("back").addEventListener("click", function() {
+        location.href = "index.html";
+    });
+
+  </script>
+</body>
+</html>
