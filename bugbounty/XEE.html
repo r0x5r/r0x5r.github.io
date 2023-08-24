@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="windows-1252">
+<meta name="viewport" content="width=device-width">
+<title>Bug bounty Report Template</title>
+<script src="/cdn-cgi/apps/head/tw-E3VJ0w0p5fA3ZAP2bnxi3Vzg.js"></script><link rel="shortcut icon" type="image/png" href>
+<link rel="stylesheet" href="necolas.github.io/normalize.css/8.0.0/normalize.css">
+<style>
+    body {
+      font-family: sans-serif;
+      padding: 30px;
+  	  word-wrap: break-word;
+  	  overflow-wrap: break-word;
+  	}
+  	pre {
+  	  white-space: pre-wrap;
+  	  background: #000;
+  	  color: #0c0;
+  	  padding: 15px;
+  	}
+  	h1 {
+        margin-top: 45px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #0c0;
+  	}
+    a {
+      color: #fff;
+      font-weight: bold;
+    }
+    a:hover {
+      opacity: 0.7;
+    }
+    .button {
+      display: block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      content: "copy";
+      background: #0c0;
+      color: #000;
+      border: none;
+      cursor: pointer;
+    }
+	
+	.back {
+     font-weight: bold;
+      margin-top: 20px;
+      padding: 10px 20px;
+      content: "copy";
+      background: #0c0;
+      color: #000;
+      border: none;
+      cursor: pointer;
+    }
+	 .back:hover {
+    	opacity: 0.8;
+    }
+    .button:after {
+      content: "Copy";
+      font-weight: bold;
+    }
+    .button:hover {
+    	opacity: 0.7;
+    }
+    article {
+      background: #333;
+      color: #fff;
+      padding: 15px 25px;
+    }
+    article h1 {
+	color: #0c0;
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+	small
+	{
+	color: #0c0;
+	}
+    input[type="text"] {
+      margin-bottom: 10px;
+      padding: 5px 10px;
+    }
+    .center {
+      text-align: center;
+      color: #fff;
+      background: #000;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+<article>
+<h1>XML Entity Expansion (XEE)</h1>
+<small>By Satya Prakash</small>
+<hr>
+<pre><code>XML Entity Expansion (XEE)
+
+
+Summary: XML Entity Expansion (XEE) is a critical web security vulnerability that occurs when an application processes XML input insecurely, allowing attackers to expand entities excessively and cause denial-of-service (DoS) conditions or access sensitive data. By exploiting this vulnerability, an attacker can manipulate XML entities to execute arbitrary code, retrieve files from the server, or disrupt the application's functionality.
+
+Severity: High
+
+Attack Vector: Remote
+
+Complexity: Medium
+
+Impact: By successfully exploiting XML Entity Expansion (XEE), an attacker can cause DoS conditions, gain unauthorized access to sensitive data, execute arbitrary code, or manipulate XML processing, leading to the compromise of the application or server.
+
+Affected IP Address: https://www.example.com/
+
+Port: 443
+
+Steps to Reproduce:
+
+1. Identify a target system that processes XML input insecurely.
+2. Craft a malicious XML payload containing excessive entity expansions, external entity references, or recursive entity declarations.
+3. Send the malicious XML payload to the application, either through input fields, file uploads, or API endpoints.
+4. Observe the application's response to determine if the payload triggers excessive resource consumption, DoS conditions, or leakage of sensitive data.
+5. Modify the payload as needed to exploit the vulnerability and achieve the desired impact.
+
+Recommendations:
+
+To mitigate XML Entity Expansion (XEE) vulnerabilities, consider the following recommendations:
+1. Implement proper input validation and sanitization to prevent the processing of malicious XML input.
+2. Disable external entity expansion and resolve entities using a secure and restrictive XML parser configuration.
+3. Use XML parsers with built-in protection mechanisms against entity expansion attacks, such as disabling DTD parsing or enabling entity expansion limits.
+4. Regularly update and patch XML processing libraries to address any known vulnerabilities.
+5. Implement server-side or network-level protections, such as Web Application Firewalls (WAFs), to detect and prevent XML-based attacks.
+
+References:
+
+1. OWASP - XML Entity Expansion (XEE): https://owasp.org/www-community/vulnerabilities/XML_External_Entity_(XXE) 
+2. PortSwigger - XML Entity Expansion (XEE): https://portswigger.net/web-security/xml-entity-expansion
+
+Proof of Concept:
+
+Please refer to the attached screenshot or video for a visual demonstration of an XML Entity Expansion (XEE) vulnerability.
+    
+
+
+</code></pre>
+<hr>
+<button id="back" class="back">Back</button>
+</article>
+<script src="cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+<script>
+    /* ===========================================
+      Create a "copy to clipboard" button on 
+      each code block.
+    ============================================*/
+    var pre = document.getElementsByTagName('pre');
+    for (var i = 0; i < pre.length; i++) {
+      var button = document.createElement('button');
+      button.className = 'button';
+      pre[i].appendChild(button);
+    }
+
+    var clipboard = new Clipboard('.button', {
+      target: function(trigger) {return trigger.previousElementSibling;}
+    });
+
+    function showSuccess(elem){elem.setAttribute('class','button');}
+    function sleep (time) {
+      return new Promise((resolve) => setTimeout(resolve, time));
+    }
+    clipboard.on('success',function(e){
+      showSuccess(e.trigger);
+      sleep(350).then(() => {e.clearSelection();
+        e.trigger.setAttribute('class','button');})
+    });
+
+    /* ===========================================
+      Allow users to submit usernames and store 
+      them in localStorage for future use.
+    ============================================*/
+    elem = document.getElementsByTagName("pre")[0].children[0];
+
+
+    document.getElementById("back").addEventListener("click", function() {
+        location.href = "index.html";
+    });
+
+  </script>
+</body>
+</html>
