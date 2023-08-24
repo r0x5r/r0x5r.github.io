@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="windows-1252">
+<meta name="viewport" content="width=device-width">
+<title>Bug bounty Report Template</title>
+<script src="/cdn-cgi/apps/head/tw-E3VJ0w0p5fA3ZAP2bnxi3Vzg.js"></script><link rel="shortcut icon" type="image/png" href>
+<link rel="stylesheet" href="necolas.github.io/normalize.css/8.0.0/normalize.css">
+<style>
+    body {
+      font-family: sans-serif;
+      padding: 30px;
+  	  word-wrap: break-word;
+  	  overflow-wrap: break-word;
+  	}
+  	pre {
+  	  white-space: pre-wrap;
+  	  background: #000;
+  	  color: #0c0;
+  	  padding: 15px;
+  	}
+  	h1 {
+        margin-top: 45px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #0c0;
+  	}
+    a {
+      color: #fff;
+      font-weight: bold;
+    }
+    a:hover {
+      opacity: 0.7;
+    }
+    .button {
+      display: block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      content: "copy";
+      background: #0c0;
+      color: #000;
+      border: none;
+      cursor: pointer;
+    }
+	
+	.back {
+     font-weight: bold;
+      margin-top: 20px;
+      padding: 10px 20px;
+      content: "copy";
+      background: #0c0;
+      color: #000;
+      border: none;
+      cursor: pointer;
+    }
+	 .back:hover {
+    	opacity: 0.8;
+    }
+    .button:after {
+      content: "Copy";
+      font-weight: bold;
+    }
+    .button:hover {
+    	opacity: 0.7;
+    }
+    article {
+      background: #333;
+      color: #fff;
+      padding: 15px 25px;
+    }
+    article h1 {
+	color: #0c0;
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+	small
+	{
+	color: #0c0;
+	}
+    input[type="text"] {
+      margin-bottom: 10px;
+      padding: 5px 10px;
+    }
+    .center {
+      text-align: center;
+      color: #fff;
+      background: #000;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+<article>
+<h1>OAuth Misconfiguration</h1>
+<small>By Satya Prakash</small>
+<hr>
+<pre><code>OAuth Misconfiguration
+    
+
+Summary: OAuth Misconfiguration is a web security vulnerability that occurs when the configuration settings of OAuth (Open Authorization) are improperly implemented, leading to potential security weaknesses. By exploiting this vulnerability, attackers can gain unauthorized access to user accounts, sensitive data, or perform malicious actions using compromised OAuth tokens.
+
+Severity: Medium
+
+Attack Vector: Remote
+
+Complexity: Low
+
+Impact: By successfully exploiting OAuth Misconfiguration, attackers can impersonate users, access unauthorized resources, perform unauthorized actions, or compromise the confidentiality and integrity of user data.
+
+Affected IP Address: https://www.example.com/
+
+Port: 443
+
+Steps to Reproduce:
+
+1. Identify the target web application or service that uses OAuth for authentication or authorization.
+2. Analyze the OAuth configuration settings, including client secrets, redirect URIs, token expiration periods, and scope permissions.
+3. Look for misconfigurations, such as using insecure redirect URIs, insufficient token validation, or improper scope permissions.
+4. Craft an attack scenario based on the identified misconfigurations, such as exploiting insecure token handling or insufficient OAuth validation.
+5. Execute the attack and observe if the misconfiguration allows unauthorized access, unauthorized actions, or exposure of sensitive information.
+
+Recommendations:
+
+To mitigate OAuth Misconfiguration vulnerabilities, consider the following recommendations:
+1. Follow OAuth best practices and security guidelines provided by the OAuth specification and relevant OAuth providers.
+2. Use secure and unique client secrets for each application or service using OAuth.
+3. Validate and sanitize redirect URIs to prevent open redirect vulnerabilities.
+4. Implement proper token validation and expiration policies to prevent token abuse or replay attacks.
+5. Limit the scope permissions granted to OAuth tokens to only what is necessary for the application's functionality.
+
+References:
+
+1. OAuth 2.0 Specification: https://oauth.net/2/ 
+2. Portswiggers - OAuth 2.0 authentication vulnerabilities | Web Security Academy (portswigger.net) 
+3. Medium - OAuth 2.0 Authentication Misconfiguration | by Mohamed Lakhdar Metidji | System Weakness
+
+Proof of Concept:
+
+Since the impact of OAuth Misconfiguration vulnerabilities can vary depending on the specific implementation and OAuth provider, no specific proof of concept is provided. It is essential to follow secure OAuth configuration practices and conduct regular security assessments to identify and remediate misconfigurations effectively.
+
+
+</code></pre>
+<hr>
+<button id="back" class="back">Back</button>
+</article>
+<script src="cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+<script>
+    /* ===========================================
+      Create a "copy to clipboard" button on 
+      each code block.
+    ============================================*/
+    var pre = document.getElementsByTagName('pre');
+    for (var i = 0; i < pre.length; i++) {
+      var button = document.createElement('button');
+      button.className = 'button';
+      pre[i].appendChild(button);
+    }
+
+    var clipboard = new Clipboard('.button', {
+      target: function(trigger) {return trigger.previousElementSibling;}
+    });
+
+    function showSuccess(elem){elem.setAttribute('class','button');}
+    function sleep (time) {
+      return new Promise((resolve) => setTimeout(resolve, time));
+    }
+    clipboard.on('success',function(e){
+      showSuccess(e.trigger);
+      sleep(350).then(() => {e.clearSelection();
+        e.trigger.setAttribute('class','button');})
+    });
+
+    /* ===========================================
+      Allow users to submit usernames and store 
+      them in localStorage for future use.
+    ============================================*/
+    elem = document.getElementsByTagName("pre")[0].children[0];
+
+
+    document.getElementById("back").addEventListener("click", function() {
+        location.href = "index.html";
+    });
+
+  </script>
+</body>
+</html>
