@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="windows-1252">
+<meta name="viewport" content="width=device-width">
+<title>Bug bounty Report Template</title>
+<script src="/cdn-cgi/apps/head/tw-E3VJ0w0p5fA3ZAP2bnxi3Vzg.js"></script><link rel="shortcut icon" type="image/png" href>
+<link rel="stylesheet" href="necolas.github.io/normalize.css/8.0.0/normalize.css">
+<style>
+    body {
+      font-family: sans-serif;
+      padding: 30px;
+  	  word-wrap: break-word;
+  	  overflow-wrap: break-word;
+  	}
+  	pre {
+  	  white-space: pre-wrap;
+  	  background: #000;
+  	  color: #0c0;
+  	  padding: 15px;
+  	}
+  	h1 {
+        margin-top: 45px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #0c0;
+  	}
+    a {
+      color: #fff;
+      font-weight: bold;
+    }
+    a:hover {
+      opacity: 0.7;
+    }
+    .button {
+      display: block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      content: "copy";
+      background: #0c0;
+      color: #000;
+      border: none;
+      cursor: pointer;
+    }
+	
+	.back {
+     font-weight: bold;
+      margin-top: 20px;
+      padding: 10px 20px;
+      content: "copy";
+      background: #0c0;
+      color: #000;
+      border: none;
+      cursor: pointer;
+    }
+	 .back:hover {
+    	opacity: 0.8;
+    }
+    .button:after {
+      content: "Copy";
+      font-weight: bold;
+    }
+    .button:hover {
+    	opacity: 0.7;
+    }
+    article {
+      background: #333;
+      color: #fff;
+      padding: 15px 25px;
+    }
+    article h1 {
+	color: #0c0;
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+	small
+	{
+	color: #0c0;
+	}
+    input[type="text"] {
+      margin-bottom: 10px;
+      padding: 5px 10px;
+    }
+    .center {
+      text-align: center;
+      color: #fff;
+      background: #000;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+<article>
+<h1>Security Misconfiguration</h1>
+<small>By Satya Prakash</small>
+<hr>
+<pre><code>Security Misconfiguration
+    
+
+Summary: Security Misconfiguration is a web security vulnerability that occurs when a web application, server, or associated components are not properly configured, leaving them vulnerable to unauthorized access, information leakage, or other security risks. By exploiting this vulnerability, attackers can gain unauthorized access, manipulate application functionality, or extract sensitive information.
+
+Severity: Medium
+
+Attack Vector: Remote
+
+Complexity: Low
+
+Impact: By successfully exploiting Security Misconfiguration, attackers can compromise the confidentiality, integrity, or availability of the application or underlying systems. This can lead to unauthorized access, data breaches, defacement, or unauthorized actions.
+
+Affected IP Address: https://www.example.com/
+
+Port: 443
+
+Steps to Reproduce:
+
+1. Identify the target system, including the web application, server, or associated components.
+2. Conduct a thorough analysis of the system's configuration settings, including default settings and access controls.
+3. Look for insecure configurations, such as unnecessary open ports, default credentials, directory listing enabled, or verbose error messages.
+4. Exploit misconfigurations to gain unauthorized access, obtain sensitive information, or manipulate application behavior.
+5. Observe the impact of the misconfiguration and the potential risks it poses to the system and its users.
+
+Recommendations:
+
+To mitigate Security Misconfiguration vulnerabilities, consider the following recommendations:
+1. Follow secure configuration guidelines and best practices for the web application, server, and associated components.
+2. Remove or disable unnecessary services, features, or ports to minimize the attack surface.
+3. Regularly update and patch all software, frameworks, and libraries used in the system to address any known vulnerabilities.
+4. Use strong and unique passwords for all accounts and avoid using default or easily guessable credentials.
+5. Implement proper access controls and permissions to limit privileges and restrict access to sensitive resources.
+
+References: 
+
+1. OWASP - Security Misconfiguration: https://owasp.org/www-project-top-ten/2017/A6_2017_Security_Misconfiguration 
+2. PortSwigger - Security Misconfiguration: Using Burp to Test for Security Misconfiguration Issues - PortSwigger
+
+Proof of Concept:
+
+Please refer to the attached screenshot or video for a visual demonstration of a Security Misconfiguration vulnerability.
+
+
+</code></pre>
+<hr>
+<button id="back" class="back">Back</button>
+</article>
+<script src="cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+<script>
+    /* ===========================================
+      Create a "copy to clipboard" button on 
+      each code block.
+    ============================================*/
+    var pre = document.getElementsByTagName('pre');
+    for (var i = 0; i < pre.length; i++) {
+      var button = document.createElement('button');
+      button.className = 'button';
+      pre[i].appendChild(button);
+    }
+
+    var clipboard = new Clipboard('.button', {
+      target: function(trigger) {return trigger.previousElementSibling;}
+    });
+
+    function showSuccess(elem){elem.setAttribute('class','button');}
+    function sleep (time) {
+      return new Promise((resolve) => setTimeout(resolve, time));
+    }
+    clipboard.on('success',function(e){
+      showSuccess(e.trigger);
+      sleep(350).then(() => {e.clearSelection();
+        e.trigger.setAttribute('class','button');})
+    });
+
+    /* ===========================================
+      Allow users to submit usernames and store 
+      them in localStorage for future use.
+    ============================================*/
+    elem = document.getElementsByTagName("pre")[0].children[0];
+
+
+    document.getElementById("back").addEventListener("click", function() {
+        location.href = "index.html";
+    });
+
+  </script>
+</body>
+</html>
