@@ -1,0 +1,174 @@
+
+<!DOCTYPE html>
+<html>
+<head><meta charset="windows-1252">
+<meta name="viewport" content="width=device-width">
+<title>Bug bounty Report Template</title>
+<script src="/cdn-cgi/apps/head/tw-E3VJ0w0p5fA3ZAP2bnxi3Vzg.js"></script><link rel="shortcut icon" type="image/png" href>
+<link rel="stylesheet" href="necolas.github.io/normalize.css/8.0.0/normalize.css">
+<style>
+    body {
+      font-family: sans-serif;
+      padding: 30px;
+  	  word-wrap: break-word;
+  	  overflow-wrap: break-word;
+  	}
+  	pre {
+  	  white-space: pre-wrap;
+  	  background: #000;
+  	  color: #0c0;
+  	  padding: 15px;
+  	}
+ article h1 {
+	color: #0c0;
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+    a {
+      color: #fff;
+      font-weight: bold;
+    }
+    a:hover {
+      opacity: 0.7;
+    }
+     .button {
+      display: block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      content: "copy";
+      background: #0c0;
+      color: #000;
+      border: none;
+      cursor: pointer;
+    }
+    small
+	{
+	color: #0c0;
+	}
+    .button:after {
+      content: "copy";
+      font-weight: bold;
+    }
+    .button:hover {
+    	opacity: 0.8;
+    }
+	.back {
+     font-weight: bold;
+      margin-top: 20px;
+      padding: 10px 20px;
+      content: "copy";
+      background: #0c0;
+      color: #000;
+      border: none;
+      cursor: pointer;
+    }
+	 .back:hover {
+    	opacity: 0.8;
+    }
+    article {
+      background: #333;
+      color: #fff;
+      padding: 15px 25px;
+    }
+    article h1 {
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+    input[type="text"] {
+      margin-bottom: 10px;
+      padding: 5px 10px;
+    }
+    .center {
+      text-align: center;
+      color: #fff;
+      background: #000;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+<article>
+<h1>No-Rate Limit</h1>
+<small>By Rohit Gautam</small>
+<hr>
+<pre><code>No Rate Limit  
+
+Summary : No Rate Limit is a type of computer security vulnerability typically found in web applications. No Rate Limit  enables attackers to perform actions on the web application where the attacker can do signup creation, password reset or 2FA of other users. No Rate Limit vulnerability may be used by attackers to bypass access controls such & bruteforce tokens and passwords without any limiting of any requests. There should be protection on the web application for sensitive actions. Attackers send a high number of requests to perform desirable actions to get access to the application or accounts. 
+NO RL effects vary in range from petty nuisance to significant security risk, depending on the sensitivity of the data handled by the vulnerable site and the nature of any security mitigation implemented by the site's owner network.
+
+
+Severity :   High  
+
+POST Request : 
+
+Complexity : Easy 
+
+From : Remote / External
+
+Steps to Reproduce: 
+
+Impact :An Adversary can carry out No Rate-Limit attack and also can take over the victim Account. 
+Also, an adversary can manage to login through any other user's account.
+
+Affected IP's : IP Address	Port
+https://www.example.com/	443
+
+Recommendations : 
+There should be a protection on the web application for limiting the users simultaneous requests.
+Any user should be Rate limited if He/She sends or races high amount of requests in a significant amount of time.
+ 
+References : 
+https://hackerone.com/reports/743545
+https://hackerone.com/reports/385381
+https://hackerone.com/reports/297359
+
+Proof of Concept :
+
+
+</code></pre>
+<hr>
+<button id="back" class="back">Back</button>
+</article>
+<script src="cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+<script>
+    /* ===========================================
+      Create a "copy to clipboard" button on 
+      each code block.
+    ============================================*/
+    var pre = document.getElementsByTagName('pre');
+    for (var i = 0; i < pre.length; i++) {
+      var button = document.createElement('button');
+      button.className = 'button';
+      pre[i].appendChild(button);
+    }
+
+    var clipboard = new Clipboard('.button', {
+      target: function(trigger) {return trigger.previousElementSibling;}
+    });
+
+    function showSuccess(elem){elem.setAttribute('class','button');}
+    function sleep (time) {
+      return new Promise((resolve) => setTimeout(resolve, time));
+    }
+    clipboard.on('success',function(e){
+      showSuccess(e.trigger);
+      sleep(350).then(() => {e.clearSelection();
+        e.trigger.setAttribute('class','button');})
+    });
+
+    /* ===========================================
+      Allow users to submit usernames and store 
+      them in localStorage for future use.
+    ============================================*/
+    elem = document.getElementsByTagName("pre")[0].children[0];
+
+
+    document.getElementById("back").addEventListener("click", function() {
+        location.href = "index.html";
+    });
+
+  </script>
+</body>
+</html>
