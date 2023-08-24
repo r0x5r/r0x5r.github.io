@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="windows-1252">
+<meta name="viewport" content="width=device-width">
+<title>Bug bounty Report Template</title>
+<script src="/cdn-cgi/apps/head/tw-E3VJ0w0p5fA3ZAP2bnxi3Vzg.js"></script><link rel="shortcut icon" type="image/png" href>
+<link rel="stylesheet" href="necolas.github.io/normalize.css/8.0.0/normalize.css">
+<style>
+    body {
+      font-family: sans-serif;
+      padding: 30px;
+  	  word-wrap: break-word;
+  	  overflow-wrap: break-word;
+  	}
+  	pre {
+  	  white-space: pre-wrap;
+  	  background: #000;
+  	  color: #0c0;
+  	  padding: 15px;
+  	}
+  	h1 {
+        margin-top: 45px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #0c0;
+  	}
+    a {
+      color: #fff;
+      font-weight: bold;
+    }
+    a:hover {
+      opacity: 0.7;
+    }
+    .button {
+      display: block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      content: "copy";
+      background: #0c0;
+      color: #000;
+      border: none;
+      cursor: pointer;
+    }
+	
+	.back {
+     font-weight: bold;
+      margin-top: 20px;
+      padding: 10px 20px;
+      content: "copy";
+      background: #0c0;
+      color: #000;
+      border: none;
+      cursor: pointer;
+    }
+	 .back:hover {
+    	opacity: 0.8;
+    }
+    .button:after {
+      content: "Copy";
+      font-weight: bold;
+    }
+    .button:hover {
+    	opacity: 0.7;
+    }
+    article {
+      background: #333;
+      color: #fff;
+      padding: 15px 25px;
+    }
+    article h1 {
+	color: #0c0;
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+	small
+	{
+	color: #0c0;
+	}
+    input[type="text"] {
+      margin-bottom: 10px;
+      padding: 5px 10px;
+    }
+    .center {
+      text-align: center;
+      color: #fff;
+      background: #000;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+<article>
+<h1>Cleartext Transmission of Session Token</h1>
+<small>By Satya Prakash</small>
+<hr>
+<pre><code>Cleartext Transmission of Session Token
+    
+
+Summary: Cleartext Transmission of Session Token is a web security vulnerability that occurs when a web application sends session tokens or authentication credentials over an insecure communication channel without proper encryption or protection. By exploiting this vulnerability, attackers can intercept the cleartext session tokens, leading to unauthorized access to user accounts, session hijacking, or identity theft.
+
+Severity: High
+
+Attack Vector: Network
+
+Complexity: Low
+
+Impact: By successfully intercepting cleartext session tokens, attackers can compromise the confidentiality and integrity of user sessions, gain unauthorized access to sensitive information, or impersonate legitimate users.
+
+Affected IP Address: https://www.example.com/
+
+Port: 443
+
+Steps to Reproduce:
+
+1. Identify the target web application that sends session tokens or authentication credentials in cleartext.
+2. Intercept the network traffic using techniques such as packet sniffing or Man-in-the-Middle (MitM) attacks.
+3. Analyze the intercepted data to identify the cleartext session tokens or credentials transmitted over the insecure communication channel.
+4. Capture the intercepted session tokens and attempt to reuse them to gain unauthorized access to user accounts.
+5. Observe the impact of successful token interception, such as unauthorized access or session hijacking.
+
+Recommendations:
+
+To mitigate Cleartext Transmission of Session Token vulnerabilities, consider the following recommendations:
+1. Implement secure communication channels, such as HTTPS, to encrypt all sensitive data, including session tokens and authentication credentials.
+2. Avoid sending session tokens or sensitive data in query parameters, as they may be logged or exposed in web server logs.
+3. Implement HTTP-only and Secure flags for session cookies to prevent client-side script access and ensure cookies are only transmitted over secure connections.
+4. Implement secure session management practices, such as session expiration, session regeneration after login, and proper logout functionality.
+5. Regularly monitor network traffic for any signs of cleartext transmission of sensitive information.
+
+References: 
+
+1. Portswigger - Cleartext submission of password - PortSwigger 
+2. Zofixer - https://zofixer.com/what-is-cleartext-transmission-of-session-token-vulnerability/
+
+Proof of Concept:
+
+Since the impact of Cleartext Transmission of Session Token vulnerabilities can vary depending on the specific web application and its security measures, no specific proof of concept is provided. It is essential to use secure communication channels and encrypt sensitive data to prevent unauthorized access to session tokens and protect user privacy effectively.
+
+
+</code></pre>
+<hr>
+<button id="back" class="back">Back</button>
+</article>
+<script src="cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+<script>
+    /* ===========================================
+      Create a "copy to clipboard" button on 
+      each code block.
+    ============================================*/
+    var pre = document.getElementsByTagName('pre');
+    for (var i = 0; i < pre.length; i++) {
+      var button = document.createElement('button');
+      button.className = 'button';
+      pre[i].appendChild(button);
+    }
+
+    var clipboard = new Clipboard('.button', {
+      target: function(trigger) {return trigger.previousElementSibling;}
+    });
+
+    function showSuccess(elem){elem.setAttribute('class','button');}
+    function sleep (time) {
+      return new Promise((resolve) => setTimeout(resolve, time));
+    }
+    clipboard.on('success',function(e){
+      showSuccess(e.trigger);
+      sleep(350).then(() => {e.clearSelection();
+        e.trigger.setAttribute('class','button');})
+    });
+
+    /* ===========================================
+      Allow users to submit usernames and store 
+      them in localStorage for future use.
+    ============================================*/
+    elem = document.getElementsByTagName("pre")[0].children[0];
+
+
+    document.getElementById("back").addEventListener("click", function() {
+        location.href = "index.html";
+    });
+
+  </script>
+</body>
+</html>
