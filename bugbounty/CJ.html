@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html>
-<head><meta charset="windows-1252">
-<meta name="viewport" content="width=device-width">
-<title>Bug bounty Report Template</title>
-<script src="/cdn-cgi/apps/head/tw-E3VJ0w0p5fA3ZAP2bnxi3Vzg.js"></script><link rel="shortcut icon" type="image/png" href>
-<link rel="stylesheet" href="/necolas.github.io/normalize.css/8.0.0/normalize.css">
-<style>
+
+<head>
+  <meta charset="windows-1252">
+  <meta name="viewport" content="width=device-width">
+  <title>Bug bounty Report Template</title>
+  <script src="/cdn-cgi/apps/head/tw-E3VJ0w0p5fA3ZAP2bnxi3Vzg.js"></script>
+  <link rel="shortcut icon" type="image/png" href>
+  <link rel="stylesheet" href="/necolas.github.io/normalize.css/8.0.0/normalize.css">
+  <style>
     body {
       font-family: sans-serif;
       padding: 30px;
-  	  word-wrap: break-word;
-  	  overflow-wrap: break-word;
-  	}
-	.back {
-     font-weight: bold;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+
+    .back {
+      font-weight: bold;
       margin-top: 20px;
       padding: 10px 20px;
       content: "copy";
@@ -22,36 +26,44 @@
       border: none;
       cursor: pointer;
     }
-	 .back:hover {
-    	opacity: 0.8;
+
+    .back:hover {
+      opacity: 0.8;
     }
-  	 pre {
-  	  white-space: pre-wrap;
-  	  background: #000;
-  	  color: #0c0;
-  	  padding: 15px;
-  	}
-  	h1 {
-        margin-top: 45px;
-        padding-bottom: 10px;
-        border-bottom: 1px solid #eee;
-  	}
+
+    pre {
+      white-space: pre-wrap;
+      background: #000;
+      color: #0c0;
+      padding: 15px;
+    }
+
+    h1 {
+      margin-top: 45px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #eee;
+    }
+
     a {
       color: #fff;
       font-weight: bold;
     }
+
     a:hover {
       opacity: 0.7;
     }
+
     article h1 {
-	color: #0c0;
+      color: #0c0;
       border-bottom: none;
       padding-bottom: 0;
       margin-bottom: 0;
     }
+
     a:hover {
       opacity: 0.7;
     }
+
     .button {
       display: block;
       margin-top: 20px;
@@ -62,31 +74,37 @@
       border: none;
       cursor: pointer;
     }
-    small
-	{
-	color: #0c0;
-	}
+
+    small {
+      color: #0c0;
+    }
+
     .button:after {
       content: "copy";
       font-weight: bold;
     }
+
     .button:hover {
-    	opacity: 0.8;
+      opacity: 0.8;
     }
+
     article {
       background: #333;
       color: #fff;
       padding: 15px 25px;
     }
+
     article h1 {
       border-bottom: none;
       padding-bottom: 0;
       margin-bottom: 0;
     }
+
     input[type="text"] {
       margin-bottom: 10px;
       padding: 5px 10px;
     }
+
     .center {
       text-align: center;
       color: #fff;
@@ -95,12 +113,13 @@
     }
   </style>
 </head>
+
 <body>
-<article>
-<h1>Click Jacking </h1>
-<small>By Satya Prakash</small>
-<hr>
-<pre><code>CJ 
+  <article>
+    <h1>Click Jacking </h1>
+    <small>By Rohit Sharma</small>
+    <hr>
+    <pre><code>CJ 
 
 Summary: Clickjacking is an interface-based attack in which a user is tricked into clicking on actionable content on a hidden website by clicking on some other content in a decoy website.
 
@@ -164,11 +183,11 @@ Proof of Concept:
 Attached Screenshot or Video
 
 </code></pre>
-<hr>
-<button id="back" class="back">Back</button>
-</article>
-<script src="cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
-<script>
+    <hr>
+    <button id="back" class="back">Back</button>
+  </article>
+  <script src="cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+  <script>
     /* ===========================================
       Create a "copy to clipboard" button on 
       each code block.
@@ -181,17 +200,19 @@ Attached Screenshot or Video
     }
 
     var clipboard = new Clipboard('.button', {
-      target: function(trigger) {return trigger.previousElementSibling;}
+      target: function (trigger) { return trigger.previousElementSibling; }
     });
 
-    function showSuccess(elem){elem.setAttribute('class','button');}
-    function sleep (time) {
+    function showSuccess(elem) { elem.setAttribute('class', 'button'); }
+    function sleep(time) {
       return new Promise((resolve) => setTimeout(resolve, time));
     }
-    clipboard.on('success',function(e){
+    clipboard.on('success', function (e) {
       showSuccess(e.trigger);
-      sleep(350).then(() => {e.clearSelection();
-        e.trigger.setAttribute('class','button');})
+      sleep(350).then(() => {
+        e.clearSelection();
+        e.trigger.setAttribute('class', 'button');
+      })
     });
 
     /* ===========================================
@@ -201,10 +222,12 @@ Attached Screenshot or Video
     elem = document.getElementsByTagName("pre")[0].children[0];
 
 
-    document.getElementById("back").addEventListener("click", function() {
-        location.href = "index.html";
+    document.getElementById("back").addEventListener("click", function () {
+      location.href = "index.html";
     });
 
   </script>
-<script>(function(){var js = "window['__CF$cv$params']={r:'7fbd42d2ddcf2e97',t:'MTY5Mjg5NzU3Ni4wNTMwMDA='};_cpo=document.createElement('script');_cpo.nonce='',_cpo.src='/cdn-cgi/challenge-platform/scripts/invisible.js',document.getElementsByTagName('head')[0].appendChild(_cpo);";var _0xh = document.createElement('iframe');_0xh.height = 1;_0xh.width = 1;_0xh.style.position = 'absolute';_0xh.style.top = 0;_0xh.style.left = 0;_0xh.style.border = 'none';_0xh.style.visibility = 'hidden';document.body.appendChild(_0xh);function handler() {var _0xi = _0xh.contentDocument || _0xh.contentWindow.document;if (_0xi) {var _0xj = _0xi.createElement('script');_0xj.innerHTML = js;_0xi.getElementsByTagName('head')[0].appendChild(_0xj);}}if (document.readyState !== 'loading') {handler();} else if (window.addEventListener) {document.addEventListener('DOMContentLoaded', handler);} else {var prev = document.onreadystatechange || function () {};document.onreadystatechange = function (e) {prev(e);if (document.readyState !== 'loading') {document.onreadystatechange = prev;handler();}};}})();</script></body>
+  <script>(function () { var js = "window['__CF$cv$params']={r:'7fbd42d2ddcf2e97',t:'MTY5Mjg5NzU3Ni4wNTMwMDA='};_cpo=document.createElement('script');_cpo.nonce='',_cpo.src='/cdn-cgi/challenge-platform/scripts/invisible.js',document.getElementsByTagName('head')[0].appendChild(_cpo);"; var _0xh = document.createElement('iframe'); _0xh.height = 1; _0xh.width = 1; _0xh.style.position = 'absolute'; _0xh.style.top = 0; _0xh.style.left = 0; _0xh.style.border = 'none'; _0xh.style.visibility = 'hidden'; document.body.appendChild(_0xh); function handler() { var _0xi = _0xh.contentDocument || _0xh.contentWindow.document; if (_0xi) { var _0xj = _0xi.createElement('script'); _0xj.innerHTML = js; _0xi.getElementsByTagName('head')[0].appendChild(_0xj); } } if (document.readyState !== 'loading') { handler(); } else if (window.addEventListener) { document.addEventListener('DOMContentLoaded', handler); } else { var prev = document.onreadystatechange || function () { }; document.onreadystatechange = function (e) { prev(e); if (document.readyState !== 'loading') { document.onreadystatechange = prev; handler(); } }; } })();</script>
+</body>
+
 </html>

@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html>
-<head><meta charset="windows-1252">
-<meta name="viewport" content="width=device-width">
-<title>Bug bounty Report Template</title>
-<script src="/cdn-cgi/apps/head/tw-E3VJ0w0p5fA3ZAP2bnxi3Vzg.js"></script><link rel="shortcut icon" type="image/png" href>
-<link rel="stylesheet" href="/necolas.github.io/normalize.css/8.0.0/normalize.css">
-<style>
+
+<head>
+  <meta charset="windows-1252">
+  <meta name="viewport" content="width=device-width">
+  <title>Bug bounty Report Template</title>
+  <script src="/cdn-cgi/apps/head/tw-E3VJ0w0p5fA3ZAP2bnxi3Vzg.js"></script>
+  <link rel="shortcut icon" type="image/png" href>
+  <link rel="stylesheet" href="/necolas.github.io/normalize.css/8.0.0/normalize.css">
+  <style>
     body {
       font-family: sans-serif;
       padding: 30px;
-  	  word-wrap: break-word;
-  	  overflow-wrap: break-word;
-  	}
-	.back {
-     font-weight: bold;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+
+    .back {
+      font-weight: bold;
       margin-top: 20px;
       padding: 10px 20px;
       content: "copy";
@@ -22,29 +26,35 @@
       border: none;
       cursor: pointer;
     }
-	 .back:hover {
-    	opacity: 0.8;
+
+    .back:hover {
+      opacity: 0.8;
     }
-  pre {
-  	  white-space: pre-wrap;
-  	  background: #000;
-  	  color: #0c0;
-  	  padding: 15px;
-  	}
-  	h1 {
-        margin-top: 45px;
-        padding-bottom: 10px;
-        border-bottom: 1px solid #eee;
-  	}
-  article h1 {
-	color: #0c0;
+
+    pre {
+      white-space: pre-wrap;
+      background: #000;
+      color: #0c0;
+      padding: 15px;
+    }
+
+    h1 {
+      margin-top: 45px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #eee;
+    }
+
+    article h1 {
+      color: #0c0;
       border-bottom: none;
       padding-bottom: 0;
       margin-bottom: 0;
     }
+
     a:hover {
       opacity: 0.7;
     }
+
     .button {
       display: block;
       margin-top: 20px;
@@ -55,31 +65,37 @@
       border: none;
       cursor: pointer;
     }
-    small
-	{
-	color: #0c0;
-	}
+
+    small {
+      color: #0c0;
+    }
+
     .button:after {
       content: "copy";
       font-weight: bold;
     }
+
     .button:hover {
-    	opacity: 0.8;
+      opacity: 0.8;
     }
+
     article {
       background: #333;
       color: #fff;
       padding: 15px 25px;
     }
+
     article h1 {
       border-bottom: none;
       padding-bottom: 0;
       margin-bottom: 0;
     }
+
     input[type="text"] {
       margin-bottom: 10px;
       padding: 5px 10px;
     }
+
     .center {
       text-align: center;
       color: #fff;
@@ -88,12 +104,13 @@
     }
   </style>
 </head>
+
 <body>
-<article>
-<h1>Cross Site Scripting (XSS)</h1>
-<small>By Satya Prakash</small>
-<hr>
-<pre><code>Cross Site Scripting (XSS) : 
+  <article>
+    <h1>Cross Site Scripting (XSS)</h1>
+    <small>By Rohit Sharma</small>
+    <hr>
+    <pre><code>Cross Site Scripting (XSS) : 
 
 Summary: Cross-site scripting (XSS) is a type of computer security vulnerability typically found in web applications. XSS enables attackers to inject client-side scripts into web pages viewed by other users. A cross-site scripting vulnerability may be used by attackers to bypass access controls such as the same-origin policy. Cross-site scripting carried out on websites accounted for roughly 84% of all security vulnerabilities documented by Symantec as of 2007. 
 
@@ -125,11 +142,11 @@ Proof of Concept:
 
 
 </code></pre>
-<hr>
-<button id="back" class="back">Back</button>
-</article>
-<script src="cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
-<script>
+    <hr>
+    <button id="back" class="back">Back</button>
+  </article>
+  <script src="cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+  <script>
     /* ===========================================
       Create a "copy to clipboard" button on 
       each code block.
@@ -142,17 +159,19 @@ Proof of Concept:
     }
 
     var clipboard = new Clipboard('.button', {
-      target: function(trigger) {return trigger.previousElementSibling;}
+      target: function (trigger) { return trigger.previousElementSibling; }
     });
 
-    function showSuccess(elem){elem.setAttribute('class','button');}
-    function sleep (time) {
+    function showSuccess(elem) { elem.setAttribute('class', 'button'); }
+    function sleep(time) {
       return new Promise((resolve) => setTimeout(resolve, time));
     }
-    clipboard.on('success',function(e){
+    clipboard.on('success', function (e) {
       showSuccess(e.trigger);
-      sleep(350).then(() => {e.clearSelection();
-        e.trigger.setAttribute('class','button');})
+      sleep(350).then(() => {
+        e.clearSelection();
+        e.trigger.setAttribute('class', 'button');
+      })
     });
 
     /* ===========================================
@@ -162,10 +181,11 @@ Proof of Concept:
     elem = document.getElementsByTagName("pre")[0].children[0];
 
 
-    document.getElementById("back").addEventListener("click", function() {
-        location.href = "index.html";
+    document.getElementById("back").addEventListener("click", function () {
+      location.href = "index.html";
     });
 
   </script>
 </body>
+
 </html>
